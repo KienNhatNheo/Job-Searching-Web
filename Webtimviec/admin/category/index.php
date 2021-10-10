@@ -41,6 +41,7 @@ require_once ('../db/dbhelper.php');
 		<thead>
 			<tr>
 				<th>STT</th>
+				<th>ID</th>
 				<th>Tên Việc Làm</th>
 				<th>Lương</th>
 				<th>???</th>
@@ -50,17 +51,18 @@ require_once ('../db/dbhelper.php');
 		<tbody>
 <?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec';
+$sql = 'select * from cong_viec order by job_id asc';
 $Listcong_viec = executeResult($sql);
 
 $index=1;
 foreach ($Listcong_viec as $item){
 	echo '<tr>
 			<td width=50px>'.($index++).'</td>
+			<td width=50px>'.$item['job_id'].'</td>
 			<td>'.$item['job_name'].'</td>
 			<td>'.$item['job_salary'].'</td>
 			<td width=140px>
-				<a href="../congviec/job_info.php"><button class="btn btn-warning">Xem chi tiết</button></a>
+				<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-warning">Xem chi tiết</button></a>
 			</td>
 			<td width=50px>
 				<a href="add.php?job_id='.$item['job_id'].'"><button class="btn btn-warning">Sửa</button></a>
@@ -68,7 +70,7 @@ foreach ($Listcong_viec as $item){
 }
 ?>		
 		
-</tbody>';
+</tbody>
 </table>
 
 		
