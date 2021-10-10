@@ -44,9 +44,9 @@ require_once ('../db/dbhelper.php');
 				<th>ID</th>
 				<th>Tên Việc Làm</th>
 				<th>Lương</th>
-				<th>???</th>
-				<th></th>
-				<th></th>
+				<th>Xem chi tiết</th>
+				<th>Sửa</th>
+				<th>Xóa</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -82,22 +82,22 @@ foreach ($Listcong_viec as $item){
 		</div>
 	</div>
 	
-<script type="text/javascript">
-	function deleteCongviec(job_id) {
-		var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
-		if(!option) {
-			return;
+	<script type="text/javascript">
+		function deleteCongviec(job_id) {
+			var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
+			if(!option) {
+				return;
+			}
+			console.log(job_id)
+			//ajax - lenh post
+			$.post('ajax.php', {
+				'job_id': job_id,
+				'action': 'delete'
+			}, function(data) {
+				location.reload();
+			})
 		}
-		console.log(job_id)
-		//ajax - lenh post
-		$.post('ajax.php', {
-			'job_id': job_id,
-			'action': 'delete'
-		}, function(data) {
-			location.reload()
-		})
-	}
-</script>
+	</script>
 </body>
 </html>
 

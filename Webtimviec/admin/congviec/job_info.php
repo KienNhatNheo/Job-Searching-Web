@@ -1,60 +1,5 @@
 <?php
 require_once ('../db/dbhelper.php');
-
-if (!empty($_POST)) {
-	if (isset($_POST["job_own"])) {
-		$job_own= $_POST['job_own'];
-	}
-	if (isset($_POST["job_name"])) {
-		$job_name= $_POST['job_name'];
-	}
-	if (isset($_POST["job_quantity"])) {
-		$job_quantity= $_POST['job_quantity'];
-	}
-	if (isset($_POST["job_salary"])) {
-		$job_salary= $_POST['job_salary'];
-	}
-	if (isset($_POST["job_language"])) {
-		$job_language= $_POST['job_language'];
-	}
-	if (isset($_POST["job_experiment"])) {
-		$job_experiment= $_POST['job_experiment'];
-	}
-	if (isset($_POST["job_environment"])) {
-		$job_environment= $_POST['job_environment'];
-	}
-	if (isset($_POST["job_profit"])) {
-		$job_profit= $_POST['job_profit'];
-	}
-	if (isset($_POST["job_address"])) {
-		$job_address= $_POST['job_address'];
-	}
-	if (isset($_POST["job_hotline"])) {
-		$job_hotline= $_POST['job_hotline'];
-	}
-	if (isset($_POST["job_email"])) {
-		$job_email= $_POST['job_email'];
-	}
-	if (isset($_POST["job_start"])) {
-		$job_start= $_POST['job_start'];
-	}
-	if (isset($_POST["job_end"])) {
-		$job_end= $_POST['job_end'];
-	}
-	
-	//Kết nối
-	$con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
-	
-	// Kiểm tra kết nối
-	if (!$con) {
-      die("Connection failed: " . mysqli_connect_error());
-	}	
-	echo "Connected successfully";
-	//Trở lại trang quản lí
-	header('Location: index.php');
-	die();
-}
-
 if(isset($_GET['job_id'])){
 	$job_id = $_GET['job_id'];
 	$sql = 'select * from cong_viec where job_id ='.$job_id;
@@ -75,11 +20,6 @@ if(isset($_GET['job_id'])){
 		$job_end = $category['job_end'];	
 	}
 }
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -114,62 +54,74 @@ if(isset($_GET['job_id'])){
 				<h2 class="text-center">Thông Tin Chi Tiết Công Việc</h2>
 			</div>
 			<div class="panel-body">
-				<form method="post">
-					<div class="form-group">
-					<?php echo "$job_own" ?>
-					  <label for="job_own">Tên doanh nghiệp:</label>
-					  <input required="true" type="text" class="form-control" id="job_own" name="job_own" value="<?=$job_own?>">
-					</div>
-					<div class="form-group">
-					  <label for="job_name">Tên công việc:</label>
-					  <input required="true" type="text" class="form-control" id="job_name" name="job_name" value="<?=$job_name?>">
-					</div>
-					<div class="form-group">
-					  <label for="job_quantity">Số lượng tuyển dụng:</label>
-					  <input type="text" class="form-control" id="job_quantity" name="job_quantity" value="<?=$job_quantity?>">
-					</div>
-					<div class="form-group">
-					  <label for="job_salary">Mức lương:</label>
-					  <input required="true" type="text" class="form-control" id="job_salary" name="job_salary" value="<?=$job_salary?>">
-					</div>
-					<div class="form-group">
-					  <label for="job_language">Yêu cầu về ngôn ngữ:</label>
-					  <input required="true" type="text" class="form-control" id="job_language" name="job_language" value="<?=$job_language?>">
-					</div>
-					<div class="form-group">
-					<label for="job_experiment">Yêu cầu về kinh nghiệm:</label>
-					  <input required="true" type="text" class="form-control" id="job_experiment" name="job_experiment" value="<?=$job_experiment?>"
-					</div>
-					<div class="form-group">
-					<label for="job_environment">Môi trường làm việc:</label>
-					  <input required="true" type="text" class="form-control" id="job_environment" name="job_environment" value="<?=$job_environment?>">
-					</div> 
-					<div class="form-group">
-					<label for="job_profit">Phúc lợi:</label>
-					  <input required="true" type="text" class="form-control" id="job_profit" name="job_profit" value="<?=$job_profit?>">
-					</div>
-					<div class="form-group">
-					<label for="job_address">Địa chỉ:</label>
-					  <input required="true" type="text" class="form-control" id="job_address" name="job_address" value="<?=$job_address?>">
-					</div>
-					<div class="form-group">
-					<label for="job_hotline">Số điện thoại:</label>
-					  <input required="true" type="text" class="form-control" id="job_hotline" name="job_hotline" value="<?=$job_hotline?>">
-					</div>
-					<div class="form-group">
-					<label for="job_email">Địa chỉ Email:</label>
-					  <input required="true" type="text" class="form-control" id="job_email" name="job_email" value="<?=$job_email?>">
-					</div>
-					<div class="form-group">
-					<label for="job_start">Thời hạn bắt đầu tuyển:</label>
-					  <input required="true" type="text" class="form-control" id="job_start" name="job_start" value="<?=$job_start?>">
-					</div>
-					<div class="form-group">
-					<label for="job_end">Thời hạn kết thúc tuyển:</label>
-					  <input style="margin-bottom:40px" required="true" type="text" class="form-control" id="job_end" name="job_end" value="<?=$job_end?>">
-					</div>
-					<button style="margin-bottom:70px" class="btn btn-success">Thêm công việc</button>
-					
+				<table class="table table-bordered table-hover">
+		<thead>
+			<tr>	
+				<th>Danh Mục</th>
+				<th>Nội Dung</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+<?php 
+// Lấy danh sách dữ liệu từ CSDL
+$sql = 'select * from cong_viec where job_id="'.$job_id.'"';
+$Listcong_viec = executeResult($sql);
+
+
+foreach ($Listcong_viec as $item){
+	echo '
+		<tr>
+			<td width=300px>Tên Doanh Nghiệp</td>
+			<td>'.$item['job_own'].'</td>
+		</tr>
+		<tr>
+			<td>Tên Việc Làm</td>
+			<td>'.$item['job_name'].'</td>
+		</tr>
+		<tr>
+			<td>Số lượng tuyển</td>
+			<td>'.$item['job_quantity'].'</td>
+		</tr>
+		<tr>
+			<td>Mức Lương</td>
+			<td>'.$item['job_salary'].'</td>
+		</tr>
+		<tr>
+			<td>Yêu Cầu Ngôn Ngữ</td>
+			<td>'.$item['job_language'].'</td>
+		</tr>
+		<tr>
+			<td>Yêu Cầu Kinh Nghiệm</td>
+			<td>'.$item['job_experiment'].'</td>
+		</tr>
+		<tr>
+			<td>Môi Trường Làm Việc</td>
+			<td>'.$item['job_environment'].'</td>
+		</tr>
+		<tr>
+			<td>Phúc lợi</td>
+			<td>'.$item['job_profit'].'</td>
+		</tr>
+		<tr>
+			<td>SĐT Liên Hệ</td>
+			<td>'.$item['job_hotline'].'</td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td>'.$item['job_email'].'</td>
+		</tr>
+		<tr>
+			<td>Ngày bắt dầu tuyển</td>
+			<td>'.$item['job_start'].'</td>
+		</tr>
+		<tr>
+			<td>Ngày kết thúc tuyển</td>
+			<td>'.$item['job_end'].'</td>
+		</tr>';
+}
+?>		
+			<a href="../category/"><button class="btn btn-success">Quay lại</button></a>
 			</div>
 		</div>
 	</div>
