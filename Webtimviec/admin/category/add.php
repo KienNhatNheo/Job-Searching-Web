@@ -66,7 +66,7 @@ if (!empty($_POST)) {
 	if($job_id == ""){
 		$sql = 'insert into cong_viec(job_own,job_name,job_quantity,job_salary,job_language,job_experiment,job_environment,job_profit,job_address,job_hotline,job_email,job_start,job_end) values ("'.$job_own.'","'.$job_name.'",'.$job_quantity.',"'.$job_salary.'","'.$job_language.'","'.$job_experiment.'","'.$job_environment.'","'.$job_profit.'","'.$job_address.'","'.$job_hotline.'","'.$job_email.'","'.$job_start.'","'.$job_end.'")';		
 	} else {
-		$sql= 'update cong_viec set job_own="'.$job_own.'" ,job_name="'.$job_name.'" where job_id='.$job_id;		
+		$sql= 'update cong_viec set job_own="'.$job_own.'" ,job_name="'.$job_name.'",job_quantity="'.$job_quantity.'",job_salary="'.$job_salary.'",job_language="'.$job_language.'",job_experiment="'.$job_experiment.'",job_environment="'.$job_environment.'",job_profit="'.$job_profit.'",job_address="'.$job_hotline.'",job_email="'.$job_email.'",job_start="'.$job_start.'",job_end="'.$job_end.'" where job_id='.$job_id;		
 	}	
 	execute($sql);
 	

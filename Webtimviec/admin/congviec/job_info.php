@@ -42,43 +42,19 @@ if (!empty($_POST)) {
 		$job_end= $_POST['job_end'];
 	}
 	
+	//Kết nối
 	$con = mysqli_connect(HOST, USERNAME, PASSWORD, DATABASE);
+	
 	// Kiểm tra kết nối
 	if (!$con) {
       die("Connection failed: " . mysqli_connect_error());
-}
- 
+	}	
 	echo "Connected successfully";
-	//Luu vao database
-	$sql = 'insert into cong_viec(job_own,job_name,job_quantity,job_salary,job_language,job_experiment,job_environment,job_profit,job_address,job_hotline,job_email,job_start,job_end) values ("'.$job_own.'","'.$job_name.'",'.$job_quantity.',"'.$job_salary.'","'.$job_language.'","'.$job_experiment.'","'.$job_environment.'","'.$job_profit.'","'.$job_address.'","'.$job_hotline.'","'.$job_email.'","'.$job_start.'","'.$job_end.'")';
-	execute($sql);
-	//Kiểm tra xem đã lưu vào database được chưa
-	if (mysqli_query($con, $sql)) {
-      echo "New record created successfully";
-	} else {
-		echo "Error: " . $sql . "<br>" . mysqli_error($con);
-	}
-	mysqli_close($con);
-	
 	//Trở lại trang quản lí
 	header('Location: index.php');
 	die();
 }
 
-$job_id="";
-$job_own = "";
-$job_name = "";
-$job_quantity = "";
-$job_salary = "";
-$job_language = "";
-$job_experiment = "";
-$job_environment = "";
-$job_profit = "";
-$job_address = "";
-$job_hotline = "";
-$job_email = "";
-$job_start = "";
-$job_end = "";
 if(isset($_GET['job_id'])){
 	$job_id = $_GET['job_id'];
 	$sql = 'select * from cong_viec where job_id ='.$job_id;
@@ -125,17 +101,17 @@ if(isset($_GET['job_id'])){
 <body>
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link" href="index.php">Quản Lý Danh Mục</a>
+	    <a class="nav-link" href="../category/index.php">Quản Lý Danh Mục</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="../congviec/">Tìm Kiếm</a>
+	    <a class="nav-link" href="../congviec/timkiem.php">Tìm Kiếm</a>
 	  </li>
 	</ul>
 
 	<div class="container">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2 class="text-center">Thêm Công Việc Mới</h2>
+				<h2 class="text-center">Thông Tin Chi Tiết Công Việc</h2>
 			</div>
 			<div class="panel-body">
 				<form method="post">

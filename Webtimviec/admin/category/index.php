@@ -46,6 +46,7 @@ require_once ('../db/dbhelper.php');
 				<th>Lương</th>
 				<th>???</th>
 				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -66,6 +67,9 @@ foreach ($Listcong_viec as $item){
 			</td>
 			<td width=50px>
 				<a href="add.php?job_id='.$item['job_id'].'"><button class="btn btn-warning">Sửa</button></a>
+			</td>
+			<td width=50px>
+				<button class="btn btn-danger" onclick = "deleteCongviec('.$item['job_id'].')">Xóa</button>
 			</td>';
 }
 ?>		
@@ -77,6 +81,23 @@ foreach ($Listcong_viec as $item){
 			</div>
 		</div>
 	</div>
+	
+<script type="text/javascript">
+	function deleteCongviec(job_id) {
+		var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
+		if(!option) {
+			return;
+		}
+		console.log(job_id)
+		//ajax - lenh post
+		$.post('ajax.php', {
+			'job_id': job_id,
+			'action': 'delete'
+		}, function(data) {
+			location.reload()
+		})
+	}
+</script>
 </body>
 </html>
 
