@@ -179,7 +179,7 @@ if (!empty($_POST)) {
 					<label for="job_end">Thời hạn kết thúc tuyển:</label>
 					  <input style="margin-bottom:40px" required="true" type="text" class="form-control" id="job_end" name="job_end" value="<?=$job_end?>">
 					</div>
-					<button style="margin-bottom:70px" class="btn btn-success">Sửa</button>
+					<button style="margin-bottom:70px" class="btn btn-success">Cập Nhật</button>
 				</form>	
 			</div>
 		</div>
