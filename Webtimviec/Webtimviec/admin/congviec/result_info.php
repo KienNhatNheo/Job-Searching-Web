@@ -85,7 +85,7 @@ foreach ($Listcong_viec as $item){
 		</tr>
 		<tr>
 			<td>Mức Lương</td>
-			<td>'.$item['job_salary'].'VNĐ</td>
+			<td>'.$item['job_salary'].'</td>
 		</tr>
 		<tr>
 			<td>Yêu Cầu Ngôn Ngữ</td>
@@ -123,7 +123,7 @@ foreach ($Listcong_viec as $item){
 ?>		
 		</tbody>
 		</table>
-			<a href="../category/"><button class="btn btn-success">Quay lại</button></a>
+			<a href="result.php"><button class="btn btn-success">Quay lại</button></a>
 			</div>
 		</div>
 	</div>
