@@ -1,25 +1,5 @@
 <?php
 require_once ('../db/dbhelper.php');
-if(isset($_GET['job_id'])){
-	$job_id = $_GET['job_id'];
-	$sql = 'select * from cong_viec where job_id ='.$job_id;
-	$category = executeSingleResult($sql);
-	if($category!= null){
-		$job_own = $category['job_own'];
-		$job_name = $category['job_name'];
-		$job_quantity = $category['job_quantity'];
-		$job_salary = $category['job_salary'];
-		$job_language = $category['job_language'];
-		$job_experiment = $category['job_experiment'];
-		$job_environment = $category['job_environment'];
-		$job_profit = $category['job_profit'];
-		$job_address = $category['job_address'];
-		$job_hotline = $category['job_hotline'];
-		$job_email = $category['job_email'];
-		$job_start = $category['job_start'];
-		$job_end = $category['job_end'];	
-	}
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -91,19 +71,19 @@ if(isset($_GET['job_id'])){
 					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/CC++.php">C/C++</a>
+					<a style="width:100px" class="nav-link" href="CC++.php">C/C++</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/Java.php">Java</a>
+					<a style="width:100px" class="nav-link" href="Java.php">Java</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/PHP.php">PHP</a>
+					<a style="width:100px" class="nav-link" href="PHP.php">PHP</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/JavaScript.php">JavaScript</a>
+					<a style="width:100px" class="nav-link" href="JavaScript.php">JavaScript</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/HTML.php">HTML</a>
+					<a style="width:100px" class="nav-link" href="HTML.php">HTML</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
 					<a style="width:100px" class="nav-link" href="#">Liên hệ</a>
@@ -166,81 +146,35 @@ if(isset($_GET['job_id'])){
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>NỘI DUNG CÔNG VIỆC</span>
+				<span>Ngôn Ngữ PHP</span>
 				<span><a href="">Xem tất cả</a></span>
 			</div>
-<table class="table table-bordered table-hover">
-		<thead>
-			<tr>	
-				<th>Danh Mục</th>
-				<th>Nội Dung</th>
-				
-			</tr>
-		</thead>
-		<tbody>
-<?php 
+
+			
+			
+			<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec where job_id="'.$job_id.'"';
-$Listcong_viec = executeResult($sql);
+$sql = "select * from cong_viec where job_language like '%PHP%'";
+$Listcong_viecC = executeResult($sql);
 
-
-foreach ($Listcong_viec as $item){
+foreach ($Listcong_viecC as $item){
 	echo '
-		<tr>
-			<td width=300px>Tên Doanh Nghiệp</td>
-			<td>'.$item['job_own'].'</td>
-		</tr>
-		<tr>
-			<td>Tên Việc Làm</td>
-			<td>'.$item['job_name'].'</td>
-		</tr>
-		<tr>
-			<td>Số lượng tuyển</td>
-			<td>'.$item['job_quantity'].'</td>
-		</tr>
-		<tr>
-			<td>Mức Lương</td>
-			<td>'.$item['job_salary'].'VNĐ</td>
-		</tr>
-		<tr>
-			<td>Yêu Cầu Ngôn Ngữ</td>
-			<td>'.$item['job_language'].'</td>
-		</tr>
-		<tr>
-			<td>Yêu Cầu Kinh Nghiệm</td>
-			<td>'.$item['job_experiment'].'</td>
-		</tr>
-		<tr>
-			<td>Môi Trường Làm Việc</td>
-			<td>'.$item['job_environment'].'</td>
-		</tr>
-		<tr>
-			<td>Phúc lợi</td>
-			<td>'.$item['job_profit'].'</td>
-		</tr>
-		<tr>
-			<td>SĐT Liên Hệ</td>
-			<td>'.$item['job_hotline'].'</td>
-		</tr>
-		<tr>
-			<td>Email</td>
-			<td>'.$item['job_email'].'</td>
-		</tr>
-		<tr>
-			<td>Ngày bắt dầu tuyển</td>
-			<td>'.$item['job_start'].'</td>
-		</tr>
-		<tr>
-			<td>Ngày kết thúc tuyển</td>
-			<td>'.$item['job_end'].'</td>
-		</tr>';
-}
-?>		
-		</tbody>
-		</table>
-			
-			
 	
+	<div class="col-lg-3">
+				<div style="width:270px" style="height:500px" class="card">
+					<img class="card-img-top" src="https://hatgiongdalat.com/asset/upload/image/hat-giong-bap-cai-chiu-nhiet_(1).jpg?v=20190410" alt="Card image">
+					<div class="card-body">
+						<a href="#">'.$item['job_name'].'</a>
+						<div>Ngôn ngữ: '.$item['job_language'].'</div>
+						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>
+						<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
+					</div>
+				</div>			
+	</div>
+			
+	';
+}
+?>	
 			
 			
 			
@@ -361,7 +295,3 @@ foreach ($Listcong_viec as $item){
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
-
-
