@@ -4,7 +4,7 @@ require_once ('../db/dbhelper.php');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ngôn ngữ HTML</title>
+	<title>Hà Nội</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -31,7 +31,7 @@ require_once ('../db/dbhelper.php');
 
 	<div class=" row header_2">
 		<div class="col-lg-3 ">
-			<img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png">
+			<a href="trangchu.php"><img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png"></a>
 		</div>
 
 		<div class="col-lg-8 ">
@@ -135,21 +135,21 @@ require_once ('../db/dbhelper.php');
 			</div>
 		</div>
 
-			<div class="container-fluid product">
+		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Ngôn ngữ HTML</span>
-				<span><a href="">Xem tất cả</a></span>
+				<span>Tại Hà Nội</span>
+				<span><a href="trangchu.php">Xem tất cả</a></span>
 			</div>
 
 			
 			
 			<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_language like '%HTML%'";
-$Listcong_viec = executeResult($sql);
+$sql = "select * from cong_viec where job_address like '%Hà Nội%'";
+$Listcong_viecC = executeResult($sql);
 
-foreach ($Listcong_viec as $item){
+foreach ($Listcong_viecC as $item){
 	echo '
 	
 	<div class="col-lg-3">

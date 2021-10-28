@@ -1,10 +1,11 @@
 <?php
 require_once ('../db/dbhelper.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ngôn ngữ HTML</title>
+	<title>Thông tin người dùng</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -23,8 +24,16 @@ require_once ('../db/dbhelper.php');
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<i class="fas fa-user"></i>
-				<a style="color: white" href="../login/login.php">Đăng nhập</a>
+				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<?php 
+       			if (isset($_SESSION['username']) && $_SESSION['username']){
+           			echo '<a href="">'.$_SESSION['username'].'</a>';
+           			echo' <span style="color:rgb(128,187,53)">---></span>';
+           			echo '<a href="../login/logout.php"> Đăng xuất</a>';
+       			} else {
+           			echo 'Bạn chưa đăng nhập';
+       			}
+       			?>
 			</li>
 		</ul>
 	</div>
@@ -97,77 +106,63 @@ require_once ('../db/dbhelper.php');
 	<!-- MAIN MENU TRÁI -->
 	<div class="container row main">
 		<div class="col-lg-3 left-menu">
-			<div class="list-group">
-				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
-				<a href="#" class="list-group-item ">Quảng Ninh</a>
-			</div>
+			
 		</div> <!-- MENU TRÁI END -->
 
 		<!-- SLIDE IMG -->
 		<div class="col-lg-9"> 
-			<div id="demo" class="carousel slide" data-ride="carousel">
-				<!-- The slideshow -->
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img style="width:900px" src="https://nghenghiep.timviecnhanh.com/wp-content/uploads/2018/01/nhung-bi-quyet-don-gian-giup-ban-thanh-cong-trong-cong-viec-hinh-anh-1.jpg"></div>
-					<div class="carousel-item">
-						<img style="width:900px" src="https://i.imgur.com/PRZwJ4Q.jpg">
-					</div>
-				</div>
+			
 
-				<!-- Left and right controls -->
-				<a class="carousel-control-prev" href="#demo" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</a>
-				<a class="carousel-control-next" href="#demo" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</a>
-			</div>
-
-			<div class="col-lg-6">
-				<img style="width:450px" src="../image/img4.jpg">
-			</div>
-
-			<div class="col-lg-6">
-				<img style="width:450px"src="../image/img2.jpg">
-			</div>
+			
 		</div>
 
-			<div class="container-fluid product">
+		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Ngôn ngữ HTML</span>
-				<span><a href="">Xem tất cả</a></span>
+				<span>Thông tin người dùng</span>
+				<span><a href="trangchu.php">Xem tất cả</a></span>
 			</div>
 
 			
 			
 			<?php 
-// Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_language like '%HTML%'";
-$Listcong_viec = executeResult($sql);
+       			if (isset($_SESSION['username']) && $_SESSION['username']){
+				$sql = 'select * from tai_khoan where username = "'.$_SESSION['username'].'"';
+				$Listsearch = executeResult($sql);
 
-foreach ($Listcong_viec as $item){
-	echo '
-	
-	<div class="col-lg-3">
-				<div style="width:270px" style="height:500px" class="card">
-					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
-					<div class="card-body">
-						<a href="#">'.$item['job_name'].'</a>
-						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>
-						<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
-					</div>
-				</div>			
-	</div>
+				foreach ($Listsearch as $item){
+					echo '
+
+				<img style="width:400px" style="height:300px" src="../image/user_avt.jpg">
+	<hr>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>	
+				<th>Họ,Tên</th>
+				<th>'.$item['user_fullname'].'</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td width=300px>Ngày sinh</td>
+			<td>'.$item['user_birthday'].'</td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td>'.$item['user_email'].'</td>
+		</tr>
+		<tr>
+			<td>Giới tính</td>
+			<td>'.$item['user_gender'].'</td>
+		</tr>
+		</tbody>
+		</table>
 			
 	';
-}
-?>	
-			
+       			}
+       		}
+       			?>
 			
 			
 		</div>  <!-- SAN PHAM BAN CHAY END -->
@@ -208,34 +203,6 @@ foreach ($Listcong_viec as $item){
 			</ul>
 		</div>
 	</div> <!-- FOOTER END -->
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

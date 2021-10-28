@@ -1,10 +1,11 @@
 <?php
 require_once ('../db/dbhelper.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ngôn ngữ HTML</title>
+	<title>Tìm kiếm</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -23,8 +24,16 @@ require_once ('../db/dbhelper.php');
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<i class="fas fa-user"></i>
-				<a style="color: white" href="../login/login.php">Đăng nhập</a>
+				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<?php 
+       			if (isset($_SESSION['username']) && $_SESSION['username']){
+           			echo '<a href="">'.$_SESSION['username'].'</a>';
+           			echo' <span style="color:rgb(128,187,53)">---></span>';
+           			echo '<a href="../login/logout.php"> Đăng xuất</a>';
+       			} else {
+           			echo 'Bạn chưa đăng nhập';
+       			}
+       			?>
 			</li>
 		</ul>
 	</div>
@@ -135,21 +144,21 @@ require_once ('../db/dbhelper.php');
 			</div>
 		</div>
 
-			<div class="container-fluid product">
+		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Ngôn ngữ HTML</span>
-				<span><a href="">Xem tất cả</a></span>
+				<span>Ngôn Ngữ PHP</span>
+				<span><a href="trangchu.php">Xem tất cả</a></span>
 			</div>
 
 			
 			
-			<?php 
-// Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_language like '%HTML%'";
-$Listcong_viec = executeResult($sql);
+			<?php if (isset($_REQUEST["name_searching"])) {
+		$name_searching= $_REQUEST['name_searching'];
+		$sql = 'select * from cong_viec where job_name = "'.$name_searching.'"';
+		$Listsearch = executeResult($sql);
 
-foreach ($Listcong_viec as $item){
+foreach ($Listsearch as $item){
 	echo '
 	
 	<div class="col-lg-3">
@@ -158,16 +167,18 @@ foreach ($Listcong_viec as $item){
 					<div class="card-body">
 						<a href="#">'.$item['job_name'].'</a>
 						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>
-						<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
+						<div>Mức lương:'.$item['job_salary'].'tr VNĐ/1tháng</div><br>
+						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
 					</div>
 				</div>			
 	</div>
 			
 	';
-}
+		}
+} else echo 'no';
+	
+
 ?>	
-			
 			
 			
 		</div>  <!-- SAN PHAM BAN CHAY END -->
@@ -208,34 +219,6 @@ foreach ($Listcong_viec as $item){
 			</ul>
 		</div>
 	</div> <!-- FOOTER END -->
-
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

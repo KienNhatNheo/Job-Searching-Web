@@ -18,7 +18,8 @@ if(isset($_GET['job_id'])){
 		$job_hotline = $category['job_hotline'];
 		$job_email = $category['job_email'];
 		$job_start = $category['job_start'];
-		$job_end = $category['job_end'];	
+		$job_end = $category['job_end'];
+		$job_img = $category['job_img'];	
 	}
 }
 
@@ -62,21 +63,16 @@ if (!empty($_POST)) {
 	if (isset($_POST["job_end"])) {
 		$job_end= $_POST['job_end'];
 	}
+	if (isset($_POST["job_img"])) {
+		$job_img= $_POST['job_img'];
+	}
 	//Luu vao database
 	if($job_id == ""){
-		$sql = 'insert into cong_viec(job_own,job_name,job_quantity,job_salary,job_language,job_experiment,job_environment,job_profit,job_address,job_hotline,job_email,job_start,job_end) values ("'.$job_own.'","'.$job_name.'",'.$job_quantity.',"'.$job_salary.'","'.$job_language.'","'.$job_experiment.'","'.$job_environment.'","'.$job_profit.'","'.$job_address.'","'.$job_hotline.'","'.$job_email.'","'.$job_start.'","'.$job_end.'")';		
+		$sql = 'insert into cong_viec(job_own,job_name,job_quantity,job_salary,job_language,job_experiment,job_environment,job_profit,job_address,job_hotline,job_email,job_start,job_end,job_img) values ("'.$job_own.'","'.$job_name.'",'.$job_quantity.',"'.$job_salary.'","'.$job_language.'","'.$job_experiment.'","'.$job_environment.'","'.$job_profit.'","'.$job_address.'","'.$job_hotline.'","'.$job_email.'","'.$job_start.'","'.$job_end.'","'.$job_img.'")';		
 	} else {
-		$sql= 'update cong_viec set job_own="'.$job_own.'" ,job_name="'.$job_name.'",job_quantity="'.$job_quantity.'",job_salary="'.$job_salary.'",job_language="'.$job_language.'",job_experiment="'.$job_experiment.'",job_environment="'.$job_environment.'",job_profit="'.$job_profit.'",job_address="'.$job_hotline.'",job_email="'.$job_email.'",job_start="'.$job_start.'",job_end="'.$job_end.'" where job_id='.$job_id;		
+		$sql= 'update cong_viec set job_own="'.$job_own.'" ,job_name="'.$job_name.'",job_quantity="'.$job_quantity.'",job_salary="'.$job_salary.'",job_language="'.$job_language.'",job_experiment="'.$job_experiment.'",job_environment="'.$job_environment.'",job_profit="'.$job_profit.'",job_address="'.$job_address.'",job_email="'.$job_email.'",job_start="'.$job_start.'",job_end="'.$job_end.'",job_img="'.$job_img.'" where job_id='.$job_id;		
 	}	
 	execute($sql);
-	
-	//Kiểm tra xem đã lưu vào database được chưa
-	if (mysqli_query($con, $sql)) {
-      echo "New record created successfully";
-	} else {
-		echo "Error: " . $sql . "<br>" . mysqli_error($con);
-	}
-	mysqli_close($con);
 	
 	//Trở lại trang quản lí
 	header('Location: index.php');
@@ -128,6 +124,7 @@ if (!empty($_POST)) {
 						// Turn off all error reporting
 						error_reporting(0);
 					?>
+					<img style="width:200px"src="<?=$job_img?>"><br>
 					  <label for="job_own">Tên doanh nghiệp:</label>
 					  <input required="true" type="text" class="form-control" id="job_own" name="job_own" value="<?=$job_own?>">
 					</div>
@@ -178,6 +175,10 @@ if (!empty($_POST)) {
 					<div class="form-group">
 					<label for="job_end">Thời hạn kết thúc tuyển:</label>
 					  <input style="margin-bottom:40px" required="true" type="text" class="form-control" id="job_end" name="job_end" value="<?=$job_end?>">
+					</div>
+					<div class="form-group">
+					<label for="job_img">Link ảnh:</label>
+					  <input style="margin-bottom:40px" required="true" type="text" class="form-control" id="job_img" name="job_img" value="<?=$job_img?>">
 					</div>
 					<button style="margin-bottom:70px" class="btn btn-success">Cập Nhật</button>
 				</form>	

@@ -1,5 +1,6 @@
 <?php
 require_once ('../db/dbhelper.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,8 +24,16 @@ require_once ('../db/dbhelper.php');
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<i class="fas fa-user"></i>
-				<a style="color: white" href="../login/login.php">Đăng nhập</a>
+				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<?php 
+       			if (isset($_SESSION['username']) && $_SESSION['username']){
+           			echo '<a href="">'.$_SESSION['username'].'</a>';
+           			echo' <span style="color:rgb(128,187,53)">---></span>';
+           			echo '<a href="../login/logout.php"> Đăng xuất</a>';
+       			} else {
+           			echo 'Bạn chưa đăng nhập';
+       			}
+       			?>
 			</li>
 		</ul>
 	</div>
@@ -159,7 +168,7 @@ foreach ($Listcong_viec as $item){
 						<a href="#">'.$item['job_name'].'</a>
 						<div>Ngôn ngữ: '.$item['job_language'].'</div>
 						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>
-						<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
+						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
 					</div>
 				</div>			
 	</div>

@@ -4,7 +4,7 @@ require_once ('../db/dbhelper.php');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ngôn ngữ HTML</title>
+	<title>Ngôn ngữ Python</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -135,19 +135,19 @@ require_once ('../db/dbhelper.php');
 			</div>
 		</div>
 
-			<div class="container-fluid product">
+		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Ngôn ngữ HTML</span>
-				<span><a href="">Xem tất cả</a></span>
+				<span>Ngôn Ngữ Python</span>
+				<span><a href="trangchu.php">Xem tất cả</a></span>
 			</div>
 
 			
 			
 			<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_language like '%HTML%'";
-$Listcong_viec = executeResult($sql);
+$sql = "select * from cong_viec where job_language like '%Python%'";
+$Listcong_viec= executeResult($sql);
 
 foreach ($Listcong_viec as $item){
 	echo '
@@ -155,7 +155,6 @@ foreach ($Listcong_viec as $item){
 	<div class="col-lg-3">
 				<div style="width:270px" style="height:500px" class="card">
 					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
-					<div class="card-body">
 						<a href="#">'.$item['job_name'].'</a>
 						<div>Ngôn ngữ: '.$item['job_language'].'</div>
 						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>

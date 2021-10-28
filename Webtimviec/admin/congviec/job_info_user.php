@@ -1,15 +1,37 @@
 <?php
 require_once ('../db/dbhelper.php');
+session_start();
+if(isset($_GET['job_id'])){
+	$job_id = $_GET['job_id'];
+	$sql = 'select * from cong_viec where job_id ='.$job_id;
+	$category = executeSingleResult($sql);
+	if($category!= null){
+		$job_own = $category['job_own'];
+		$job_name = $category['job_name'];
+		$job_quantity = $category['job_quantity'];
+		$job_salary = $category['job_salary'];
+		$job_language = $category['job_language'];
+		$job_experiment = $category['job_experiment'];
+		$job_environment = $category['job_environment'];
+		$job_profit = $category['job_profit'];
+		$job_address = $category['job_address'];
+		$job_hotline = $category['job_hotline'];
+		$job_email = $category['job_email'];
+		$job_start = $category['job_start'];
+		$job_end = $category['job_end'];	
+	}
+}
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ngôn ngữ HTML</title>
+	<title>Thông tin chi tiết</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="trangchu.css">
+	<link rel="stylesheet" type="text/css" href="../home_page/trangchu.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 </head>
 <body>
 	<div class="topbar header">
@@ -23,15 +45,23 @@ require_once ('../db/dbhelper.php');
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<i class="fas fa-user"></i>
-				<a style="color: white" href="../login/login.php">Đăng nhập</a>
+				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<?php 
+       			if (isset($_SESSION['username']) && $_SESSION['username']){
+           			echo '<a href="">'.$_SESSION['username'].'</a>';
+           			echo' <span style="color:rgb(128,187,53)">---></span>';
+           			echo '<a href="../login/logout.php"> Đăng xuất</a>';
+       			} else {
+           			echo 'Bạn chưa đăng nhập';
+       			}
+       			?>
 			</li>
 		</ul>
 	</div>
 
 	<div class=" row header_2">
 		<div class="col-lg-3 ">
-			<img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png">
+			<a href="trangchu.php"><img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png"></a>
 		</div>
 
 		<div class="col-lg-8 ">
@@ -65,22 +95,22 @@ require_once ('../db/dbhelper.php');
 		<nav class="navbar navbar-expand-sm">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
+					<a class="nav-link" href="../home_page/trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="CC++.php">C/C++</a>
+					<a style="width:100px" class="nav-link" href="../home_page/CC++.php">C/C++</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="Java.php">Java</a>
+					<a style="width:100px" class="nav-link" href="../home_page/Java.php">Java</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="PHP.php">PHP</a>
+					<a style="width:100px" class="nav-link" href="../home_page/PHP.php">PHP</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="Python.php">Python</a>
+					<a style="width:100px" class="nav-link" href="../home_page/Python.php">Python</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="HTML.php">HTML</a>
+					<a style="width:100px" class="nav-link" href="../home_page/HTML.php">HTML</a>
 				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">
@@ -99,8 +129,8 @@ require_once ('../db/dbhelper.php');
 		<div class="col-lg-3 left-menu">
 			<div class="list-group">
 				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
+				<a href="../home_page/hanoi.php" class="list-group-item ">Hà Nội</a>
+				<a href="../home_page/haiphong.php" class="list-group-item ">Hải Phòng</a>
 				<a href="#" class="list-group-item ">Quảng Ninh</a>
 			</div>
 		</div> <!-- MENU TRÁI END -->
@@ -135,38 +165,91 @@ require_once ('../db/dbhelper.php');
 			</div>
 		</div>
 
-			<div class="container-fluid product">
+		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Ngôn ngữ HTML</span>
+				<span>Thông tin chi tiết</span>
 				<span><a href="">Xem tất cả</a></span>
 			</div>
 
-			
-			
-			<?php 
+<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_language like '%HTML%'";
+$sql = 'select * from cong_viec where job_id="'.$job_id.'"';
 $Listcong_viec = executeResult($sql);
+
 
 foreach ($Listcong_viec as $item){
 	echo '
-	
-	<div class="col-lg-3">
-				<div style="width:270px" style="height:500px" class="card">
-					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
-					<div class="card-body">
-						<a href="#">'.$item['job_name'].'</a>
-						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>
-						<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
-					</div>
-				</div>			
-	</div>
-			
-	';
+	<img style="width:400px" style="height:300px" src='.$item['job_img'].'>
+	<hr>
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>	
+				<th>Danh Mục</th>
+				<th>Nội Dung</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td width=300px>Tên Doanh Nghiệp</td>
+			<td>'.$item['job_own'].'</td>
+		</tr>
+		<tr>
+			<td>Tên Việc Làm</td>
+			<td>'.$item['job_name'].'</td>
+		</tr>
+		<tr>
+			<td>Số lượng tuyển</td>
+			<td>'.$item['job_quantity'].'</td>
+		</tr>
+		<tr>
+			<td>Mức Lương</td>
+			<td>'.$item['job_salary'].'VNĐ</td>
+		</tr>
+		<tr>
+			<td>Yêu Cầu Ngôn Ngữ</td>
+			<td>'.$item['job_language'].'</td>
+		</tr>
+		<tr>
+			<td>Yêu Cầu Kinh Nghiệm</td>
+			<td>'.$item['job_experiment'].'</td>
+		</tr>
+		<tr>
+			<td>Môi Trường Làm Việc</td>
+			<td>'.$item['job_environment'].'</td>
+		</tr>
+		<tr>
+			<td>Địa chỉ</td>
+			<td>'.$item['job_address'].'</td>
+		</tr>
+		<tr>
+			<td>Phúc lợi</td>
+			<td>'.$item['job_profit'].'</td>
+		</tr>
+		<tr>
+			<td>SĐT Liên Hệ</td>
+			<td>'.$item['job_hotline'].'</td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td>'.$item['job_email'].'</td>
+		</tr>
+		<tr>
+			<td>Ngày bắt dầu tuyển</td>
+			<td>'.$item['job_start'].'</td>
+		</tr>
+		<tr>
+			<td>Ngày kết thúc tuyển</td>
+			<td>'.$item['job_end'].'</td>
+		</tr>';
 }
-?>	
+?>		
+		</tbody>
+		</table>
+			
+			
+	
 			
 			
 			
