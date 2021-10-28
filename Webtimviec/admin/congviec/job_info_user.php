@@ -98,19 +98,19 @@ if(isset($_GET['job_id'])){
 					<a class="nav-link" href="../home_page/trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/CC++.php">C/C++</a>
+					<a style="width:100px" class="nav-link" href="../home_page_user/CC++.php">C/C++</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/Java.php">Java</a>
+					<a style="width:100px" class="nav-link" href="../home_page_user/Java.php">Java</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/PHP.php">PHP</a>
+					<a style="width:100px" class="nav-link" href="../home_page_user/PHP.php">PHP</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/Python.php">Python</a>
+					<a style="width:100px" class="nav-link" href="../home_page_user/Python.php">Python</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/HTML.php">HTML</a>
+					<a style="width:100px" class="nav-link" href="../home_page_user/HTML.php">HTML</a>
 				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">

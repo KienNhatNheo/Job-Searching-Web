@@ -101,7 +101,7 @@ if(isset($_GET['job_id'])){
 					<a style="width:100px" class="nav-link" href="../home_page/Python.php">Python</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/HTML.php">HTML</a>
+					<a style="width:100px" class="nav-link" href="../home_page_user/HTML.php">HTML</a>
 				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">
