@@ -48,9 +48,8 @@ if (isset($_POST['dangnhap']))
     $_SESSION['username'] = $username;
     echo "Xin chào <b>" .$username . "</b>. Bạn đã đăng nhập thành công. <a href='../home_page/trangchu.php'>Trở về trang chủ</a>";
 
+   
 
-    // $_SESSION['POST'] = $_POST;
-    // header('Location: ../home_page_user/trangchu.php?id='.$row["user_id"].'',true,307);
     header('Location:../home_page_user/trangchu.php');
 
 }

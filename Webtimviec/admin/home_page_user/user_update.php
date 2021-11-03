@@ -1,6 +1,28 @@
 <?php
 require_once ('../db/dbhelper.php');
 session_start();
+$user_id="";
+ $sql = 'select * from tai_khoan where username = "'.$_SESSION['username'].'"';
+    $list = executeResult($sql);
+    foreach($list as $item){
+    $user_id = $item['user_id'];}
+if (!empty($_POST)) {
+	if (isset($_POST["user_fullname"])) {
+		$user_fullname= $_POST['user_fullname'];
+	}
+	if (isset($_POST["user_birthday"])) {
+		$user_birthday= $_POST['user_birthday'];
+	}
+	if (isset($_POST["user_email"])) {
+		$user_email= $_POST['user_email'];
+	}
+	if (isset($_POST["user_gender"])) {
+		$user_gender= $_POST['user_gender'];
+	}
+}
+error_reporting(0);
+$sql1 = 'update tai_khoan set user_fullname="'.$user_fullname.'" ,user_birthday="'.$user_birthday.'",user_email="'.$user_email.'",user_gender="'.$user_gender.'" where user_id ='.$user_id; 		
+execute($sql1);
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,14 +46,12 @@ session_start();
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
            			echo' <span style="color:rgb(128,187,53)">---></span>';
            			echo '<a href="../login/logout.php"> Đăng xuất</a>';
-       			} else {
-           			echo 'Bạn chưa đăng nhập';
        			}
        			?>
 			</li>
@@ -125,46 +145,36 @@ session_start();
 
 			
 			
-			<?php 
-       			if (isset($_SESSION['username']) && $_SESSION['username']){
-				$sql = 'select * from tai_khoan where username = "'.$_SESSION['username'].'"';
-				$Listsearch = executeResult($sql);
-
-				foreach ($Listsearch as $item){
-					echo '
-
-				<img style="width:400px" style="height:300px" src="../image/user_avt.jpg">
-	<hr>
-	<table class="table table-bordered table-hover">
-		<thead>
-			<tr>	
-				<th>Họ,Tên</th>
-				<th>'.$item['user_fullname'].'</th>
+			<form action ="user_update.php" method="POST">
+					<div class="form-group">
+					<?php
+						// Turn off all error reporting
+						error_reporting(0);
+						$sql = 'select * from tai_khoan where user_id ='.$user_id;
+						$list_user = executeResult($sql);
+						foreach($list_user as $item) {
+					?>
+					<img style="width:200px"src="../image/user_avt.jpg"><br>
+					  <label for="user_fullname">Họ, Tên</label>
+					  <input required="true" type="text" class="form-control" id="user_fullname" name="user_fullname" value="<?=$item['user_fullname']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_birthday">Ngày sinh</label>
+					  <input required="true" type="text" class="form-control" id="user_birthday" name="user_birthday" value="<?=$item['user_birthday']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_email">Email</label>
+					  <input type="text" class="form-control" id="user_email" name="user_email" value="<?=$item['user_email']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_gender">Giới tính</label>
+					  <input required="true" type="text" class="form-control" id="user_gender" name="user_gender" value="<?=$item['user_gender']?>">
+					</div>
+					<button type="submit" style="margin-right: 50px;"  class="btn btn-success">Cập Nhật</button>
+					
+				<?php } ?>
+				</form>	
 				
-			</tr>
-		</thead>
-		<tbody>
-		<tr>
-			<td width=300px>Ngày sinh</td>
-			<td>'.$item['user_birthday'].'</td>
-		</tr>
-		<tr>
-			<td>Email</td>
-			<td>'.$item['user_email'].'</td>
-		</tr>
-		<tr>
-			<td>Giới tính</td>
-			<td>'.$item['user_gender'].'</td>
-		</tr>
-		</tbody>
-		</table>
-		<a href="user_update.php?id='.$item['user_id'].'"><button class="btn btn-success">Sửa thông tin</button></a>
-			
-	';
-       			}
-       		}
-       			?>
-			
 		</div>  <!-- SAN PHAM BAN CHAY END -->
 
 		
