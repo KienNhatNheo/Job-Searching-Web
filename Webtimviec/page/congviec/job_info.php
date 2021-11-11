@@ -45,7 +45,7 @@ if(isset($_GET['job_id'])){
 			</li>
 			<li style="margin-left: 48%">
 				<i class="fas fa-user"></i>
-				<a style="color: white" href="#">Đăng nhập</a>
+				<a style="color: white" href="../login/login.php">Đăng nhập</a>
 			</li>
 		</ul>
 	</div>
@@ -86,7 +86,7 @@ if(isset($_GET['job_id'])){
 		<nav class="navbar navbar-expand-sm">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
+					<a class="nav-link" href="../home_page/trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
 					<a style="width:100px" class="nav-link" href="../home_page/Front-end.php">Front-end</a>
@@ -226,7 +226,7 @@ foreach ($Listcong_viec as $item){
 		</table>';
 }
 ?>		
-			
+			<a href="../home_page/trangchu.php"><button class="btn btn-success">Quay lại</button></a>
 			
 	
 			

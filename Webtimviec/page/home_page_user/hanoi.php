@@ -77,19 +77,19 @@ session_start();
 					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="CC++.php">C/C++</a>
+					<a style="width:100px" class="nav-link" href="Front-end.php">Front-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="Java.php">Java</a>
+					<a style="width:100px" class="nav-link" href="Back-end.php">Back-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="PHP.php">PHP</a>
+					<a style="width:100px" class="nav-link" href="Tester.php">Tester</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="Python.php">Python</a>
+					<a style="width:100px" class="nav-link" href="AI.php">AI</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="HTML.php">HTML</a>
+					<a style="width:100px" class="nav-link" href="khac.php">Khác</a>
 				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">

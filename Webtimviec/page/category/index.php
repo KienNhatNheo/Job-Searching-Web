@@ -66,7 +66,7 @@ foreach ($Listcong_viec as $item){
 				<a href="../congviec/job_info.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
 			</td>
 			<td width=50px>
-				<a href="user_update.php?job_id='.$item['job_id'].'"><button class="btn btn-warning">Sửa</button></a>
+				<a href="add.php?job_id='.$item['job_id'].'"><button class="btn btn-warning">Sửa</button></a>
 			</td>
 			<td width=50px>
 				<button class="btn btn-danger" onclick = "deleteCongviec('.$item['job_id'].')">Xóa</button>

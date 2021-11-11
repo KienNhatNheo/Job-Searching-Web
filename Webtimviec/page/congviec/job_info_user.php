@@ -92,10 +92,10 @@ if(isset($_GET['job_id'])){
 
 	<!-- THANH MENU -->
 	<div class="menu"> <!-- THANH MENU START -->
-		nav class="navbar navbar-expand-sm">
+		<nav class="navbar navbar-expand-sm">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
+					<a class="nav-link" href="../home_page_user/">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
 					<a style="width:100px" class="nav-link" href="../home_page_user/Front-end.php">Front-end</a>
@@ -235,6 +235,8 @@ foreach ($Listcong_viec as $item){
 ?>		
 		</tbody>
 		</table>
+		<a href="../home_page/trangchu.php"><button class="btn btn-success">Quay lại</button></a>
+			
 			
 			
 	

@@ -4,7 +4,7 @@ require_once ('../db/dbhelper.php');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ngôn ngữ HTML</title>
+	<title>Công việc khác</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -31,7 +31,7 @@ require_once ('../db/dbhelper.php');
 
 	<div class=" row header_2">
 		<div class="col-lg-3 ">
-			<img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png">
+			<a href="trangchu.php"><img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png"></a>
 		</div>
 
 		<div class="col-lg-8 ">
@@ -58,6 +58,7 @@ require_once ('../db/dbhelper.php');
 			</div>
 
 		</div>
+		
 	</div>
 
 	<!-- THANH MENU -->
@@ -68,24 +69,24 @@ require_once ('../db/dbhelper.php');
 					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="CC++.php">C/C++</a>
+					<a style="width:100px" class="nav-link" href="Front-end.php">Front-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="Java.php">Java</a>
+					<a style="width:100px" class="nav-link" href="Back-end.php">Back-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="PHP.php">PHP</a>
+					<a style="width:100px" class="nav-link" href="Tester.php">Tester</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="Python.php">Python</a>
+					<a style="width:100px" class="nav-link" href="AI.php">AI</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="HTML.php">HTML</a>
+					<a style="width:100px" class="nav-link" href="khac.php">Khác</a>
 				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Tìm kiếm tên công việc" name="name_searching">
+					<input type="text" class="form-control" placeholder="Tìm kiếm theo ngôn ngữ" name="name_searching">
 					
 					<button type="submit"><img style="width: 20px" src="../image/search_icon.jpg"></button>
 					
@@ -111,45 +112,36 @@ require_once ('../db/dbhelper.php');
 				<!-- The slideshow -->
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img style="width:900px" src="https://nghenghiep.timviecnhanh.com/wp-content/uploads/2018/01/nhung-bi-quyet-don-gian-giup-ban-thanh-cong-trong-cong-viec-hinh-anh-1.jpg"></div>
-					<div class="carousel-item">
-						<img style="width:900px" src="https://i.imgur.com/PRZwJ4Q.jpg">
-					</div>
+						<img style="width:800px" src="../image/banner.png"></div>
+					
 				</div>
 
-				<!-- Left and right controls -->
-				<a class="carousel-control-prev" href="#demo" data-slide="prev">
-					<span class="carousel-control-prev-icon"></span>
-				</a>
-				<a class="carousel-control-next" href="#demo" data-slide="next">
-					<span class="carousel-control-next-icon"></span>
-				</a>
 			</div>
 
 			<div class="col-lg-6">
-				<img style="width:450px" src="../image/img4.jpg">
+				<a href="https://blog.topcv.vn/ban-muon-tim-cong-viec-phu-hop-voi-tinh-cach-sau-day-la-mot-vai-tips-dang-xem/"><img style="width:450px;height:170px;" src="../image/left-img.jpg" title="Bạn muốn tìm công việc phù hợp với tính cách?"></a>
 			</div>
 
 			<div class="col-lg-6">
-				<img style="width:450px"src="../image/img2.jpg">
+				<a href="https://jobsgo.vn/blog/hoc-cntt-ra-lam-gi/"><img style="width:450px;height:170px;"src="../image/img2.jpg" title="Học CNTT ra làm gì?"></a>
 			</div>
 		</div>
 
-			<div class="container-fluid product">
+		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Ngôn ngữ HTML</span>
-				<span><a href="">Xem tất cả</a></span>
+				<span>CÔNG VIỆC KHÁC</span>
+				<span><a href="trangchu.php"></a></span>
 			</div>
 
 			
 			
 			<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_language like '%HTML%'";
-$Listcong_viec = executeResult($sql);
+$sql = "select * from cong_viec where job_class = 'khac'";
+$Listcong_viecC = executeResult($sql);
 
-foreach ($Listcong_viec as $item){
+foreach ($Listcong_viecC as $item){
 	echo '
 	
 	<div class="col-lg-3">
@@ -193,7 +185,7 @@ foreach ($Listcong_viec as $item){
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">TIN TỨC MỚI NHẤT</li>
 				<li class="list-group-item"><a href="https://genk.vn/co-gi-o-talkshow-tan-cong-mang-va-giai-phap-bao-mat-hieu-qua-trong-nganh-cctv-20211004141858541.chn"> - Có gì ở talkshow “Tấn công mạng và giải pháp bảo mật hiệu quả trong ngành CCTV”?</a></li>
-				<li class="list-group-item"><a href="https://genk.vn/cau-it-nham-hoang-khang-la-ai-vi-sao-bi-bat-20211004123206001.chn">- "Cậu IT" Nhâm Hoàng Khang là ai, vì sao bị bắt?</a></li>
+				
 				<li class="list-group-item"><a href="https://vnexpress.net/top-10-cong-viec-nganh-cntt-luong-cao-nhat-nuoc-my-4295073.html">- Top 10 công việc ngành CNTT lương cao nhất nước Mỹ</a></li>
 			</ul>
 		</div>

@@ -79,6 +79,9 @@ require_once ('../db/dbhelper.php');
 				<li style="text-align:center" class="nav-item">
 					<a style="width:100px" class="nav-link" href="AI.php">AI</a>
 				</li>
+				<li style="text-align:center" class="nav-item">
+					<a style="width:100px" class="nav-link" href="khac.php">Khác</a>
+				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">
 				<div class="input-group">
@@ -133,7 +136,7 @@ require_once ('../db/dbhelper.php');
 			
 			<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = "select * from cong_viec where job_name like '%Tester%'";
+$sql = "select * from cong_viec where job_class = 'test'";
 $Listcong_viec = executeResult($sql);
 
 foreach ($Listcong_viec as $item){
