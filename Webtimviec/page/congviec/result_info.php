@@ -46,6 +46,9 @@ if(isset($_GET['job_id'])){
 	  <li class="nav-item">
 	    <a class="nav-link" href="../congviec/timkiem.php">Tìm Kiếm</a>
 	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link active" href="../category/apply_job.php">Tìm Kiếm</a>
+	  </li>
 	</ul>
 
 	<div class="container">

@@ -119,7 +119,7 @@ session_start();
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Thông tin người dùng</span>
+				<span>THÔNG TIN NGƯỜI DÙNG</span>
 				<span><a href="trangchu.php"></a></span>
 			</div>
 

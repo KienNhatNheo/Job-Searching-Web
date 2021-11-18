@@ -26,6 +26,9 @@ require_once ('../db/dbhelper.php');
 	  <li class="nav-item">
 	    <a class="nav-link active" href="../congviec/search.php">Tìm Kiếm</a>
 	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link active" href="../category/apply_job.php">Tìm Kiếm</a>
+	  </li>
 	</ul>
 
 	<div class="container">

@@ -29,26 +29,22 @@ if (isset($_POST['dangnhap']))
     $query = "SELECT * FROM tai_khoan WHERE username='$username'";
 
     $result = mysqli_query($con, $query) or die( mysqli_error($con));
-
-    if (!$result) {
-    echo "Tên đăng nhập hoặc mật khẩu không đúng!";
-    } else {
-    echo "Đăng nhập thành công!";
-    }
       
     //Lấy mật khẩu trong database ra
     $row = mysqli_fetch_array($result);
     //So sánh 2 mật khẩu có trùng khớp hay không
+    error_reporting(0);
     if ($password != $row['user_password']) {
-    echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+      header('Location:return.php');
+    // echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a> <script>
+    // alert('sai mat khau');
+    // </script>";
+    
     exit;
     }
       
     //Lưu tên đăng nhập
     $_SESSION['username'] = $username;
-    echo "Xin chào <b>" .$username . "</b>. Bạn đã đăng nhập thành công. <a href='../home_page/trangchu.php'>Trở về trang chủ</a>";
-
-   
 
     header('Location:../home_page_user/trangchu.php');
 
@@ -117,24 +113,7 @@ if (isset($_POST['dangnhap']))
         </div>  
   </div>
     </div>
-    <div class="carousel-item">
-      <img class="d-block img-fluid" src="https://images.pexels.com/photos/7097/people-coffee-tea-meeting.jpg" alt="First slide">
-      <div class="carousel-caption d-none d-md-block">
-        <div class="banner-text">
-            <h2>This is Heaven</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-        </div>  
-    </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block img-fluid" src="https://images.pexels.com/photos/872957/pexels-photo-872957.jpeg" alt="First slide">
-      <div class="carousel-caption d-none d-md-block">
-        <div class="banner-text">
-            <h2>This is Heaven</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
-        </div>  
-    </div>
-  </div>
+    
             </div>     
         
     </div>

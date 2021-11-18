@@ -139,7 +139,7 @@ execute($sql1);
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>Thông tin người dùng</span>
+				<span>SỬA THÔNG TIN NGƯỜI DÙNG</span>
 				<span><a href="trangchu.php"></a></span>
 			</div>
 

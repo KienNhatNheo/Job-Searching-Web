@@ -45,7 +45,7 @@ if(isset($_GET['job_id'])){
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="../home_page_user/user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
@@ -230,13 +230,16 @@ foreach ($Listcong_viec as $item){
 		<tr>
 			<td>Ngày kết thúc tuyển</td>
 			<td>'.$item['job_end'].'</td>
-		</tr>';
-}
-?>		
+		</tr>
+		
 		</tbody>
 		</table>
-		<a href="../home_page/trangchu.php"><button class="btn btn-success">Quay lại</button></a>
-			
+		<a href="../home_page_user/trangchu.php"><button class="btn btn-success">Quay lại</button></a>
+		<a href="../home_page_user/apply_handle.php?id='.$item['job_id'].'"><button style="margin-left:399px;" class="btn btn-success">Ứng tuyển</button></a>	
+		';
+}
+?>		
+		
 			
 			
 	

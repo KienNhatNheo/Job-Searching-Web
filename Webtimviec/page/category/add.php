@@ -114,6 +114,9 @@ if (!empty($_POST)) {
 	  <li class="nav-item">
 	    <a class="nav-link" href="../congviec/">Tìm Kiếm</a>
 	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" href="apply_job.php">Ứng tuyển</a>
+	  </li>
 	</ul>
 
 	<div class="container">
