@@ -26,7 +26,7 @@ if (isset($_POST['dangnhap']))
 
 
     //Kiểm tra tên đăng nhập có tồn tại không
-    $query = "SELECT * FROM tai_khoan WHERE username='$username'";
+    $query = "SELECT * FROM tai_khoan_cty WHERE fac_username='$username'";
 
     $result = mysqli_query($con, $query) or die( mysqli_error($con));
       
@@ -34,7 +34,7 @@ if (isset($_POST['dangnhap']))
     $row = mysqli_fetch_array($result);
     //So sánh 2 mật khẩu có trùng khớp hay không
     error_reporting(0);
-    if ($password != $row['user_password']) {
+    if ($password != $row['fac_password']) {
       header('Location:return.php');
     // echo "Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a> <script>
     // alert('sai mat khau');
@@ -46,7 +46,7 @@ if (isset($_POST['dangnhap']))
     //Lưu tên đăng nhập
     $_SESSION['username'] = $username;
 
-    header('Location:../home_page_user/trangchu.php');
+    header('Location:../home_page_factory/trangchu.php');
 
 }
 ?>
@@ -72,7 +72,7 @@ if (isset($_POST['dangnhap']))
     <div class="container">
   <div class="row">
     <div class="col-md-4 login-sec">
-        <h2 class="text-center">Đăng Nhập Người Dùng</h2>
+        <h2 class="text-center">Đăng Nhập Doanh Nghiệp</h2>
         <form class="login-form" action='login.php?do=login' method='POST'>
   <div class="form-group">
     <label for="exampleInputEmail1" class="text">Tên Tài Khoản</label>

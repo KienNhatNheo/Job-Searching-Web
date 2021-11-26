@@ -1,11 +1,11 @@
 <?php
 require_once ('../db/dbhelper.php');
-session_start(); 
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Trang chủ</title>
+	<title>Trí tuệ nhân tạo</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -35,7 +35,6 @@ session_start();
        			}
        			?>
 			</li>
-				
 		</ul>
 	</div>
 
@@ -108,10 +107,10 @@ session_start();
 	<div class="container row main">
 		<div class="col-lg-3 left-menu">
 			<div class="list-group">
-				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
-				<a href="#" class="list-group-item ">Quảng Ninh</a>
+				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Quản Lí</span>
+				<a href="apply_job.php" class="list-group-item ">Người Ứng Cử</a>
+				<a href="job_add_fac.php" class="list-group-item ">Thêm Công Việc</a>
+				<a href="job_list.php" class="list-group-item ">Công Việc Đã Đăng</a>
 			</div>
 		</div> <!-- MENU TRÁI END -->
 
@@ -139,15 +138,17 @@ session_start();
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>CÔNG VIỆC NỔI BẬT</span>
-				<span><a href=""></a></span>
+				<span>TRÍ TUỆ NHÂN TẠO</span>
+				<span><a href="trangchu.php"></a></span>
 			</div>
-<?php 
+
+			
+			
+			<?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec order by job_id asc limit 16';
+$sql = "select * from cong_viec where job_class = 'ai'";
 $Listcong_viec = executeResult($sql);
 
-$index=1;
 foreach ($Listcong_viec as $item){
 	echo '
 	
@@ -157,8 +158,8 @@ foreach ($Listcong_viec as $item){
 					<div class="card-body">
 						<a href="#">'.$item['job_name'].'</a>
 						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương(tháng):'.$item['job_salary'].'tr VNĐ</div><br>
-						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
+						<div>Mức lương:'.$item['job_salary'].'VNĐ</div><br>
+						<a href="../congviec/job_info_fac.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
 					</div>
 				</div>			
 	</div>
@@ -192,6 +193,7 @@ foreach ($Listcong_viec as $item){
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item">TIN TỨC MỚI NHẤT</li>
 				<li class="list-group-item"><a href="https://genk.vn/co-gi-o-talkshow-tan-cong-mang-va-giai-phap-bao-mat-hieu-qua-trong-nganh-cctv-20211004141858541.chn"> - Có gì ở talkshow “Tấn công mạng và giải pháp bảo mật hiệu quả trong ngành CCTV”?</a></li>
+				
 				<li class="list-group-item"><a href="https://vnexpress.net/top-10-cong-viec-nganh-cntt-luong-cao-nhat-nuoc-my-4295073.html">- Top 10 công việc ngành CNTT lương cao nhất nước Mỹ</a></li>
 			</ul>
 		</div>
@@ -206,8 +208,6 @@ foreach ($Listcong_viec as $item){
 			</ul>
 		</div>
 	</div> <!-- FOOTER END -->
-
-
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

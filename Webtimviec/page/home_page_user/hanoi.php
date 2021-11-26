@@ -24,7 +24,7 @@ session_start();
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
@@ -153,7 +153,7 @@ foreach ($Listcong_viecC as $item){
 	echo '
 	
 	<div class="col-lg-3">
-				<div style="width:270px" style="height:500px" class="card">
+				<div style="width:260px" style="height:500px" class="card">
 					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
 					<div class="card-body">
 						<a href="#">'.$item['job_name'].'</a>

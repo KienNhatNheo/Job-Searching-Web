@@ -45,6 +45,14 @@
     <label for="exampleInputPassword1" class="text">Giới tính</label>
     <input type="text" class="form-control" placeholder="" name='txtGender'>
   </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="text">Kinh nghiệm</label>
+    <input type="text" class="form-control" placeholder="" name='txtExp'>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="text">Ngôn ngữ sử dụng</label>
+    <input type="text" class="form-control" placeholder="" name='txtLanguage'>
+  </div>
     <div class="form-check">
     <button type="submit" class="btn btn-login float-right">Đăng Ký</button>
   </div>

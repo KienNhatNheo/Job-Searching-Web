@@ -19,9 +19,15 @@ if (!empty($_POST)) {
 	if (isset($_POST["user_gender"])) {
 		$user_gender= $_POST['user_gender'];
 	}
+	if (isset($_POST["user_exp"])) {
+		$user_exp= $_POST['user_exp'];
+	}
+	if (isset($_POST["user_language"])) {
+		$user_language= $_POST['user_language'];
+	}
 }
 error_reporting(0);
-$sql1 = 'update tai_khoan set user_fullname="'.$user_fullname.'" ,user_birthday="'.$user_birthday.'",user_email="'.$user_email.'",user_gender="'.$user_gender.'" where user_id ='.$user_id; 		
+$sql1 = 'update tai_khoan set user_fullname="'.$user_fullname.'" ,user_birthday="'.$user_birthday.'",user_email="'.$user_email.'",user_gender="'.$user_gender.'",user_exp = "'.$user_exp.'",user_language = "'.$user_language.'" where user_id ='.$user_id; 		
 execute($sql1);
 ?>
 <!DOCTYPE html>
@@ -169,6 +175,14 @@ execute($sql1);
 					<div class="form-group">
 					  <label for="user_gender">Giới tính</label>
 					  <input required="true" type="text" class="form-control" id="user_gender" name="user_gender" value="<?=$item['user_gender']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_exp">Kinh nghiệm làm việc</label>
+					  <input required="true" type="text" class="form-control" id="user_exp" name="user_exp" value="<?=$item['user_exp']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_language">Ngôn ngữ sử dụng</label>
+					  <input required="true" type="text" class="form-control" id="user_language" name="user_language" value="<?=$item['user_language']?>">
 					</div>
 					<button type="submit" style="margin-right: 50px;margin-bottom: 30px;width: 120px;"  class="btn btn-success">Cập Nhật</button>
 					

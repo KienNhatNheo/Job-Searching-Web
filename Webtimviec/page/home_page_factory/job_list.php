@@ -1,11 +1,11 @@
 <?php
 require_once ('../db/dbhelper.php');
-session_start(); 
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Trang chủ</title>
+	<title>Thông tin người dùng</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -24,7 +24,7 @@ session_start();
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
@@ -35,7 +35,6 @@ session_start();
        			}
        			?>
 			</li>
-				
 		</ul>
 	</div>
 
@@ -107,66 +106,77 @@ session_start();
 	<!-- MAIN MENU TRÁI -->
 	<div class="container row main">
 		<div class="col-lg-3 left-menu">
-			<div class="list-group">
-				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
-				<a href="#" class="list-group-item ">Quảng Ninh</a>
-			</div>
+			
 		</div> <!-- MENU TRÁI END -->
 
 		<!-- SLIDE IMG -->
 		<div class="col-lg-9"> 
-			<div id="demo" class="carousel slide" data-ride="carousel">
-				<!-- The slideshow -->
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img style="width:800px" src="../image/banner.png"></div>
-					
-				</div>
+			
 
-			</div>
-
-			<div class="col-lg-6">
-				<a href="https://blog.topcv.vn/ban-muon-tim-cong-viec-phu-hop-voi-tinh-cach-sau-day-la-mot-vai-tips-dang-xem/"><img style="width:450px;height:170px;" src="../image/left-img.jpg" title="Bạn muốn tìm công việc phù hợp với tính cách?"></a>
-			</div>
-
-			<div class="col-lg-6">
-				<a href="https://jobsgo.vn/blog/hoc-cntt-ra-lam-gi/"><img style="width:450px;height:170px;"src="../image/img2.jpg" title="Học CNTT ra làm gì?"></a>
-			</div>
+			
 		</div>
 
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>CÔNG VIỆC NỔI BẬT</span>
-				<span><a href=""></a></span>
+				<span>CÔNG VIỆC ĐÃ ĐĂNG</span>
+				<span><a href="trangchu.php"></a></span>
 			</div>
+			<br>
+
+			<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>STT</th>
+				<th>ID</th>
+				<th>Tên Việc Làm</th>
+				<th>Lương</th>
+				<th>Ngôn Ngữ</th>
+				<th>Xóa</th>
+			</tr>
+		</thead>
+		<tbody>
 <?php 
+$sql = 'select fac_name from tai_khoan_cty where fac_username = "'.$_SESSION['username'].'"';
+$name = executeSingleResult($sql);
 // Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec order by job_id asc limit 16';
+$sql = 'select * from cong_viec where job_own = "'.$name['fac_name'].'" order by job_id asc';
 $Listcong_viec = executeResult($sql);
 
 $index=1;
 foreach ($Listcong_viec as $item){
-	echo '
-	
-	<div class="col-lg-3">
-				<div style="width:260px" style="height:500px" class="card">
-					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
-					<div class="card-body">
-						<a href="#">'.$item['job_name'].'</a>
-						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương(tháng):'.$item['job_salary'].'tr VNĐ</div><br>
-						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
-					</div>
-				</div>			
-	</div>
-			
-	';
+	echo '<tr>
+			<td width=50px>'.($index++).'</td>
+			<td width=50px>'.$item['job_id'].'</td>
+			<td>'.$item['job_name'].'</td>
+			<td>'.$item['job_salary'].'trVNĐ/tháng</td>
+			<td>'.$item['job_language'].'</td>
+			<td width=50px>
+				<button class="btn btn-danger" onclick = "deleteCongviec('.$item['job_id'].')">Xóa</button>
+			</td>';
 }
-?>	
+?>		
+		
+</tbody>
+</table>
+<a href="javascript:history.go(-1)"><button class="btn btn-success" style="margin-top: 25px;margin-left: 500px;width: 93px;">Quay lại</button></a>
 			
+			<script type="text/javascript">
+		function deleteCongviec(job_id) {
+			var option = confirm('Bạn có chắc chắn muốn xoá danh mục này không?')
+			if(!option) {
+				return;
+			}
+			console.log(job_id)
+			//ajax - lenh post
+			$.post('ajax.php', {
+				'job_id': job_id,
+				'action': 'delete'
+			}, function(data) {
+				location.reload();
+			})
+		}
+	</script>
 			
 			
 		</div>  <!-- SAN PHAM BAN CHAY END -->
@@ -206,8 +216,6 @@ foreach ($Listcong_viec as $item){
 			</ul>
 		</div>
 	</div> <!-- FOOTER END -->
-
-
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

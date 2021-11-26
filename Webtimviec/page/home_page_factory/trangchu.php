@@ -108,10 +108,10 @@ session_start();
 	<div class="container row main">
 		<div class="col-lg-3 left-menu">
 			<div class="list-group">
-				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
-				<a href="#" class="list-group-item ">Quảng Ninh</a>
+				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Quản Lí</span>
+				<a href="apply_job.php" class="list-group-item ">Người Ứng Cử</a>
+				<a href="job_add_fac.php" class="list-group-item ">Thêm Công Việc</a>
+				<a href="job_list.php" class="list-group-item ">Công Việc Đã Đăng</a>
 			</div>
 		</div> <!-- MENU TRÁI END -->
 
@@ -158,7 +158,7 @@ foreach ($Listcong_viec as $item){
 						<a href="#">'.$item['job_name'].'</a>
 						<div>Ngôn ngữ: '.$item['job_language'].'</div>
 						<div>Mức lương(tháng):'.$item['job_salary'].'tr VNĐ</div><br>
-						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
+						<a href="../congviec/job_info_fac.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
 					</div>
 				</div>			
 	</div>

@@ -23,7 +23,7 @@ require_once ('../db/dbhelper.php');
 			</li>
 			<li style="margin-left: 48%">
 				<i class="fas fa-user"></i>
-				<a style="color: white" href="../login/login.php">Đăng nhập</a>
+				<a style="color: white" href="user_choice.html">Đăng nhập</a>
 			</li>
 		</ul>
 	</div>
@@ -144,7 +144,7 @@ foreach ($Listcong_viec as $item){
 	echo '
 	
 	<div class="col-lg-3">
-				<div style="width:270px" style="height:500px" class="card">
+				<div style="width:260px" style="height:500px" class="card">
 					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
 					<div class="card-body">
 						<a href="#">'.$item['job_name'].'</a>

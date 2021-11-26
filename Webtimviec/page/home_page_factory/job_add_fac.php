@@ -1,11 +1,11 @@
 <?php
 require_once ('../db/dbhelper.php');
-session_start(); 
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Trang chủ</title>
+	<title>Thông tin người dùng</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -24,7 +24,7 @@ session_start();
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
@@ -35,7 +35,6 @@ session_start();
        			}
        			?>
 			</li>
-				
 		</ul>
 	</div>
 
@@ -107,65 +106,150 @@ session_start();
 	<!-- MAIN MENU TRÁI -->
 	<div class="container row main">
 		<div class="col-lg-3 left-menu">
-			<div class="list-group">
-				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
-				<a href="#" class="list-group-item ">Quảng Ninh</a>
-			</div>
+			
 		</div> <!-- MENU TRÁI END -->
 
 		<!-- SLIDE IMG -->
 		<div class="col-lg-9"> 
-			<div id="demo" class="carousel slide" data-ride="carousel">
-				<!-- The slideshow -->
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img style="width:800px" src="../image/banner.png"></div>
-					
-				</div>
+			
 
-			</div>
-
-			<div class="col-lg-6">
-				<a href="https://blog.topcv.vn/ban-muon-tim-cong-viec-phu-hop-voi-tinh-cach-sau-day-la-mot-vai-tips-dang-xem/"><img style="width:450px;height:170px;" src="../image/left-img.jpg" title="Bạn muốn tìm công việc phù hợp với tính cách?"></a>
-			</div>
-
-			<div class="col-lg-6">
-				<a href="https://jobsgo.vn/blog/hoc-cntt-ra-lam-gi/"><img style="width:450px;height:170px;"src="../image/img2.jpg" title="Học CNTT ra làm gì?"></a>
-			</div>
+			
 		</div>
 
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>CÔNG VIỆC NỔI BẬT</span>
-				<span><a href=""></a></span>
+				<span>THÊM CÔNG VIỆC MỚI</span>
+				<span><a href="trangchu.php"></a></span>
 			</div>
-<?php 
-// Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec order by job_id asc limit 16';
-$Listcong_viec = executeResult($sql);
+			<br>
 
-$index=1;
-foreach ($Listcong_viec as $item){
-	echo '
-	
-	<div class="col-lg-3">
-				<div style="width:260px" style="height:500px" class="card">
-					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
-					<div class="card-body">
-						<a href="#">'.$item['job_name'].'</a>
-						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương(tháng):'.$item['job_salary'].'tr VNĐ</div><br>
-						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
-					</div>
-				</div>			
-	</div>
-			
-	';
-}
-?>	
+			<form action="add_handle.php" method="POST">
+				<table style="border-collapse: collapse;">
+					<tr>
+						<td>
+							<label style="margin-right: 50px;" for="njobname">Tên Công Việc </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobname" id="njobname">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style="margin-right: 50px;" for="njobquantity">Số Lượng Tuyển </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobquantity" id="njobquantity">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style="margin-right: 50px;" for="njobsalary">Lương(triệu VNĐ/tháng) </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobsalary" id="njobsalary">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label style="margin-right: 50px;" for="njoblanguage">Ngôn ngữ yêu cầu </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njoblanguage" id="njoblanguage">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobexp">Kinh nghiệm làm việc </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobexp" id="njobexp">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobenv">Môi trường làm việc </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobenv" id="njobenv">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobpro">Phúc lợi </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobpro" id="njobpro">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobaddr">Địa chỉ </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobaddr" id="njobaddr">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobphone">Số điện thoại liên hệ </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobphone" id="njobphone">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobemail">Email </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobemail" id="njobemail">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobstart">Bắt đầu ứng tuyển </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobstart" id="njobstart">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobend">Kết thúc ứng tuyển</label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobend" id="njobend">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njoblink">Link hình ảnh </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njoblink" id="njoblink">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="njobclass">Phân loại </label>
+						</td>
+						<td>
+							<input style="width: 500px;" type="text" name="njobclass" id="njobclass" placeholder="be:Back-end||fe:Front-end||ai:AI|test:Tester||khac:Khác">
+						</td>
+					</tr>
+				</table>
+				<button type="submit" onclick="thongbao()" style="margin-top: 25px;margin-left: 350px;" class="btn btn-success">Cập Nhật</button>
+
+			</form>
+			<a href="javascript:history.go(-1)"><button class="btn btn-success" style="margin-top: 25px;margin-left: 350px;width: 93px;">Quay lại</button></a>
+			<script type="text/javascript">
+				function thongbao(){
+					document.getElementById("thongbao").innerHTML = "Cập Nhật Thành Công!"
+					document.getElementById("thongbao").style.marginLeft = 480 + 'px'
+					document.getElementById("thongbao").style.marginTop = 15 + 'px'
+				}
+			</script>	
 			
 			
 			
@@ -206,8 +290,6 @@ foreach ($Listcong_viec as $item){
 			</ul>
 		</div>
 	</div> <!-- FOOTER END -->
-
-
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 

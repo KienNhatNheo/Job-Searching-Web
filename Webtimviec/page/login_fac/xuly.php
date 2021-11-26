@@ -17,7 +17,7 @@
     <div class="container">
   <div class="row">
     <div class="col-md-4 login-sec">
-        <?php
+<?php
 require_once ('../db/dbhelper.php');
     // Nếu không phải là sự kiện đăng ký thì không xử lý
     if (!isset($_POST['txtUsername'])){
@@ -31,17 +31,12 @@ require_once ('../db/dbhelper.php');
     header('Content-Type: text/html; charset=UTF-8');
           
     //Lấy dữ liệu từ file dangky.php
+    $fullname   = $_POST['txtFullname'];
     $username   = $_POST['txtUsername'];
     $password   = $_POST['txtPassword'];
-    $email      = $_POST['txtEmail'];
-    $fullname   = $_POST['txtFullname'];
-    $birthday   = $_POST['txtBirthday'];
-    $gender     = $_POST['txtGender'];
-    $exp        = $_POST['txtExp'];
-    $language   = $_POST['txtLanguage'];
-          
+        
     //Kiểm tra người dùng đã nhập liệu đầy đủ chưa
-    if (!$username || !$password || !$email || !$fullname || !$birthday || !$gender || !$exp || !$language)
+    if (!$username || !$password || !$fullname )
     {
         echo "Vui lòng nhập đầy đủ thông tin. <a href='javascript: history.go(-1)'>Trở lại</a>";
         exit;
@@ -50,33 +45,24 @@ require_once ('../db/dbhelper.php');
         // Mã khóa mật khẩu
         $password = md5($password);
     //Lưu thông tin thành viên vào bảng
-    $sql ='INSERT INTO tai_khoan (
-            username,
-            user_password,
-            user_email,
-            user_fullname,
-            user_birthday,
-            user_gender,
-            user_exp,
-            user_language
-        )
-        values (
-            "'.$username.'",
-            "'.$password.'",
-            "'.$email.'",
-            "'.$fullname.'",
-            "'.$birthday.'",
-           "'.$gender.'",
-           "'.$exp.'",
-           "'.$language.'")';
+    $sql ='INSERT INTO tai_khoan_cty (
+        fac_name,
+        fac_username,
+        fac_password
+            
+    )
+    values (
+        "'.$fullname.'",
+        "'.$username.'",
+        "'.$password.'"
+    )';
     execute($sql);   
     echo 'Bạn đã đăng ký tài khoản thành công!
     <br>
     <a href="login.php"><button class="btn btn-success">Đăng nhập tại đây</button></a>'; 
 
 ?>
-
-    </div>
+</div>
         <div class="col-md-8 banner-sec">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -101,4 +87,6 @@ require_once ('../db/dbhelper.php');
 </section> 
 </body>
 </html>
+    
+
     

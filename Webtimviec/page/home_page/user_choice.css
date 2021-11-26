@@ -1,0 +1,45 @@
+*{
+	margin:0px;
+	padding:0px;
+	box-sizing: border-box;
+}
+
+.header{
+	margin: 0px auto;
+	margin-top: 50px;
+	text-align: center;
+	font-size: 50px;
+	margin-bottom: 5px;
+}
+
+.menu{
+	width: 1200px;
+	margin: 0 auto;
+	padding-top: 25px;
+	display: flex;
+	justify-content: space-between;
+	border: 1px solid black;
+	background-color: skyblue;
+	z-index: 10;
+}
+
+.menu>.hotnew{
+	width: 33,3%;
+	padding: 0px 20px;
+}
+
+.menu>.hotnew:last-child{
+	width: 30%;
+}
+
+.menu>.hotnew>.content-img{
+	width: 100%;
+	height: 300px;
+	margin-bottom: 30px;
+}
+
+.menu>.hotnew>p{
+	padding: 10px 0px;
+	font-size: 40px;
+	text-align: center;
+}

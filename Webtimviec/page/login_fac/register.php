@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,65 +18,28 @@
     <div class="container">
   <div class="row">
     <div class="col-md-4 login-sec">
-        <?php
-require_once ('../db/dbhelper.php');
-    // Nếu không phải là sự kiện đăng ký thì không xử lý
-    if (!isset($_POST['txtUsername'])){
-        die('');
-    }
-     
-    //Nhúng file kết nối với database
-
-          
-    //Khai báo utf-8 để hiển thị được tiếng việt
-    header('Content-Type: text/html; charset=UTF-8');
-          
-    //Lấy dữ liệu từ file dangky.php
-    $username   = $_POST['txtUsername'];
-    $password   = $_POST['txtPassword'];
-    $email      = $_POST['txtEmail'];
-    $fullname   = $_POST['txtFullname'];
-    $birthday   = $_POST['txtBirthday'];
-    $gender     = $_POST['txtGender'];
-    $exp        = $_POST['txtExp'];
-    $language   = $_POST['txtLanguage'];
-          
-    //Kiểm tra người dùng đã nhập liệu đầy đủ chưa
-    if (!$username || !$password || !$email || !$fullname || !$birthday || !$gender || !$exp || !$language)
-    {
-        echo "Vui lòng nhập đầy đủ thông tin. <a href='javascript: history.go(-1)'>Trở lại</a>";
-        exit;
-    }
-          
-        // Mã khóa mật khẩu
-        $password = md5($password);
-    //Lưu thông tin thành viên vào bảng
-    $sql ='INSERT INTO tai_khoan (
-            username,
-            user_password,
-            user_email,
-            user_fullname,
-            user_birthday,
-            user_gender,
-            user_exp,
-            user_language
-        )
-        values (
-            "'.$username.'",
-            "'.$password.'",
-            "'.$email.'",
-            "'.$fullname.'",
-            "'.$birthday.'",
-           "'.$gender.'",
-           "'.$exp.'",
-           "'.$language.'")';
-    execute($sql);   
-    echo 'Bạn đã đăng ký tài khoản thành công!
-    <br>
-    <a href="login.php"><button class="btn btn-success">Đăng nhập tại đây</button></a>'; 
-
-?>
-
+        <h2 class="text-center">Đăng Ký</h2>
+        <form class="login-form" action="xuly.php" method="POST">
+  <div class="form-group">
+    <div class="form-group">
+    <label for="exampleInputPassword1" class="text">Tên Doanh Nghiệp</label>
+    <input type="text" class="form-control" placeholder="" name='txtFullname'>
+  </div>
+    <label for="exampleInputEmail1" class="text">Tên Tài Khoản</label>
+    <input type="text" class="form-control" placeholder="" name='txtUsername'>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1" class="text">Mật Khẩu</label>
+    <input type="password" class="form-control" placeholder="" name='txtPassword'>
+  </div>
+  
+  
+    <div class="form-check">
+    <button type="submit" class="btn btn-login float-right">Đăng Ký</button>
+  </div>
+  
+</form>
     </div>
         <div class="col-md-8 banner-sec">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">

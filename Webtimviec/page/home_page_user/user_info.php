@@ -24,7 +24,7 @@ session_start();
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="#"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
@@ -156,14 +156,24 @@ session_start();
 			<td>Giới tính</td>
 			<td>'.$item['user_gender'].'</td>
 		</tr>
+		<tr>
+			<td>Kinh nghiệp làm việc</td>
+			<td>'.$item['user_exp'].'</td>
+		</tr>
+		<tr>
+			<td>Ngôn ngữ sử dụng</td>
+			<td>'.$item['user_language'].'</td>
+		</tr>
 		</tbody>
 		</table>
 		<a href="user_update.php?id='.$item['user_id'].'"><button class="btn btn-success">Sửa thông tin</button></a>
+		
 			
 	';
        			}
        		}
        			?>
+
 			
 		</div>  <!-- SAN PHAM BAN CHAY END -->
 

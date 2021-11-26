@@ -126,8 +126,8 @@ if(isset($_GET['job_id'])){
 		<div class="col-lg-3 left-menu">
 			<div class="list-group">
 				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="../home_page/hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="../home_page/haiphong.php" class="list-group-item ">Hải Phòng</a>
+				<a href="../home_page_user/hanoi.php" class="list-group-item ">Hà Nội</a>
+				<a href="../home_page_user/haiphong.php" class="list-group-item ">Hải Phòng</a>
 				<a href="#" class="list-group-item ">Quảng Ninh</a>
 			</div>
 		</div> <!-- MENU TRÁI END -->
@@ -235,12 +235,19 @@ foreach ($Listcong_viec as $item){
 		</tbody>
 		</table>
 		<a href="../home_page_user/trangchu.php"><button class="btn btn-success">Quay lại</button></a>
-		<a href="../home_page_user/apply_handle.php?id='.$item['job_id'].'"><button style="margin-left:399px;" class="btn btn-success">Ứng tuyển</button></a>	
+		<a href="../home_page_user/apply_handle.php?id='.$item['job_id'].'"><button onclick="thongbao()" style="margin-left:399px;" class="btn btn-success">Ứng tuyển</button></a>	
+		<div id = "thongbao"></div>
 		';
 }
 ?>		
 		
-			
+	<script type="text/javascript">
+				function thongbao(){
+					document.getElementById("thongbao").innerHTML = "Ứng tuyển thành công"
+					document.getElementById("thongbao").style.marginLeft = 480 + 'px'
+					document.getElementById("thongbao").style.marginTop = 15 + 'px'
+				}
+			</script>		
 			
 	
 			

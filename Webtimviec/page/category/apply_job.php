@@ -45,9 +45,11 @@ require_once ('../db/dbhelper.php');
 				<th style="color:greenyellow;">Công việc</th>
 				<th style="color:greenyellow;">Công ty ứng tuyển</th>
 				<th style="color:greenyellow;">Địa chỉ</th>
+				<th style="color:greenyellow;">Thời gian</th>
 			</tr>
 		</thead>
 			<?php
+			error_reporting(0);
 			$sql = 'select * from apply_job';
 $Listcong_viec = executeResult($sql);
 
@@ -66,14 +68,14 @@ foreach ($Listcong_viec as $item){
 		<td>'.$nameofjob['job_name'].'</td>
 		<td>'.$nameofjob['job_own'].'</td>
 		<td>'.$nameofjob['job_address'].'</td>
+		<td>'.$item['job_time'].'</td>
+		
 		</tr>
 </tbody>
 ';
 }
-			
 
-			?>	
-			</table>
+?>	
 	
 
 		

@@ -1,11 +1,33 @@
 <?php
 require_once ('../db/dbhelper.php');
-session_start(); 
+session_start();
+$user_id="";
+ $sql = 'select * from tai_khoan where username = "'.$_SESSION['username'].'"';
+    $list = executeResult($sql);
+    foreach($list as $item){
+    $user_id = $item['user_id'];}
+if (!empty($_POST)) {
+	if (isset($_POST["user_fullname"])) {
+		$user_fullname= $_POST['user_fullname'];
+	}
+	if (isset($_POST["user_birthday"])) {
+		$user_birthday= $_POST['user_birthday'];
+	}
+	if (isset($_POST["user_email"])) {
+		$user_email= $_POST['user_email'];
+	}
+	if (isset($_POST["user_gender"])) {
+		$user_gender= $_POST['user_gender'];
+	}
+}
+error_reporting(0);
+$sql1 = 'update tai_khoan set user_fullname="'.$user_fullname.'" ,user_birthday="'.$user_birthday.'",user_email="'.$user_email.'",user_gender="'.$user_gender.'" where user_id ='.$user_id; 		
+execute($sql1);
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Trang chủ</title>
+	<title>Thông tin người dùng</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="trangchu.css">
@@ -30,12 +52,9 @@ session_start();
            			echo '<a href="">'.$_SESSION['username'].'</a>';
            			echo' <span style="color:rgb(128,187,53)">---></span>';
            			echo '<a href="../login/logout.php"> Đăng xuất</a>';
-       			} else {
-           			echo 'Bạn chưa đăng nhập';
        			}
        			?>
 			</li>
-				
 		</ul>
 	</div>
 
@@ -107,68 +126,56 @@ session_start();
 	<!-- MAIN MENU TRÁI -->
 	<div class="container row main">
 		<div class="col-lg-3 left-menu">
-			<div class="list-group">
-				<span class="list-group-item" style="color: white; font-size: 17px; background: #80bb35; border-radius: 30px; font-weight: bolder;">Địa Điểm</span>
-				<a href="hanoi.php" class="list-group-item ">Hà Nội</a>
-				<a href="haiphong.php" class="list-group-item ">Hải Phòng</a>
-				<a href="#" class="list-group-item ">Quảng Ninh</a>
-			</div>
+			
 		</div> <!-- MENU TRÁI END -->
 
 		<!-- SLIDE IMG -->
 		<div class="col-lg-9"> 
-			<div id="demo" class="carousel slide" data-ride="carousel">
-				<!-- The slideshow -->
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img style="width:800px" src="../image/banner.png"></div>
-					
-				</div>
+			
 
-			</div>
-
-			<div class="col-lg-6">
-				<a href="https://blog.topcv.vn/ban-muon-tim-cong-viec-phu-hop-voi-tinh-cach-sau-day-la-mot-vai-tips-dang-xem/"><img style="width:450px;height:170px;" src="../image/left-img.jpg" title="Bạn muốn tìm công việc phù hợp với tính cách?"></a>
-			</div>
-
-			<div class="col-lg-6">
-				<a href="https://jobsgo.vn/blog/hoc-cntt-ra-lam-gi/"><img style="width:450px;height:170px;"src="../image/img2.jpg" title="Học CNTT ra làm gì?"></a>
-			</div>
+			
 		</div>
 
 		<div class="container-fluid product">
 			<!-- SẢN PHẨM BÁN CHẠY -->
 			<div class="row title">
-				<span>CÔNG VIỆC NỔI BẬT</span>
-				<span><a href=""></a></span>
+				<span>SỬA THÔNG TIN NGƯỜI DÙNG</span>
+				<span><a href="trangchu.php"></a></span>
 			</div>
-<?php 
-// Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec order by job_id asc limit 16';
-$Listcong_viec = executeResult($sql);
 
-$index=1;
-foreach ($Listcong_viec as $item){
-	echo '
-	
-	<div class="col-lg-3">
-				<div style="width:260px" style="height:500px" class="card">
-					<img style="height:250px" class="card-img-top" src="'.$item['job_img'].'" alt="Card image">
-					<div class="card-body">
-						<a href="#">'.$item['job_name'].'</a>
-						<div>Ngôn ngữ: '.$item['job_language'].'</div>
-						<div>Mức lương(tháng):'.$item['job_salary'].'tr VNĐ</div><br>
-						<a href="../congviec/job_info_user.php?job_id='.$item['job_id'].'"><button class="btn btn-success">Xem chi tiết</button></a>
+			
+			
+			<form action ="user_update.php" method="POST">
+					<div class="form-group">
+					<?php
+						// Turn off all error reporting
+						error_reporting(0);
+						$sql = 'select * from tai_khoan where user_id ='.$user_id;
+						$list_user = executeResult($sql);
+						foreach($list_user as $item) {
+					?>
+					<img style="width:200px"src="../image/user_avt.jpg"><br>
+					  <label for="user_fullname">Họ, Tên</label>
+					  <input required="true" type="text" class="form-control" id="user_fullname" name="user_fullname" value="<?=$item['user_fullname']?>">
 					</div>
-				</div>			
-	</div>
-			
-	';
-}
-?>	
-			
-			
-			
+					<div class="form-group">
+					  <label for="user_birthday">Ngày sinh</label>
+					  <input required="true" type="text" class="form-control" id="user_birthday" name="user_birthday" value="<?=$item['user_birthday']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_email">Email</label>
+					  <input type="text" class="form-control" id="user_email" name="user_email" value="<?=$item['user_email']?>">
+					</div>
+					<div class="form-group">
+					  <label for="user_gender">Giới tính</label>
+					  <input required="true" type="text" class="form-control" id="user_gender" name="user_gender" value="<?=$item['user_gender']?>">
+					</div>
+					<button type="submit" style="margin-right: 50px;margin-bottom: 30px;width: 120px;"  class="btn btn-success">Cập Nhật</button>
+					
+				<?php } ?>
+				</form>
+				<a href="user_info.php" ><button class="btn btn-warning" style="width: 120px;">Quay lại</button></a>	
+				
 		</div>  <!-- SAN PHAM BAN CHAY END -->
 
 		
@@ -206,8 +213,6 @@ foreach ($Listcong_viec as $item){
 			</ul>
 		</div>
 	</div> <!-- FOOTER END -->
-
-
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
