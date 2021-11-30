@@ -226,7 +226,7 @@ foreach ($Listcong_viec as $item){
 		</table>';
 }
 ?>		
-			<a href="../home_page/trangchu.php"><button class="btn btn-success">Quay lại</button></a>
+			<a href="javascript:history.go(-1)"><button class="btn btn-success">Quay lại</button></a>
 			
 	
 			
