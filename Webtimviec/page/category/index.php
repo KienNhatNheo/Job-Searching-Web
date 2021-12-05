@@ -30,7 +30,7 @@ require_once ('../db/dbhelper.php');
 	    <a class="nav-link" href="apply_job.php">Ứng tuyển</a>
 	  </li>
 	  <li class="nav-item">
-	    <a class="nav-link" href="account_manager.php.php">Quản Lý Tài Khoản</a>
+	    <a class="nav-link" href="account_manager.php">Quản Lý Tài Khoản</a>
 	  </li>
 	</ul>
 

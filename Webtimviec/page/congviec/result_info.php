@@ -50,7 +50,7 @@ if(isset($_GET['job_id'])){
 	    <a class="nav-link active" href="../category/apply_job.php">Tìm Kiếm</a>
 	  </li>
 	   <li class="nav-item">
-	    <a class="nav-link" href="../category/account_manager.php.php">Quản Lý Tài Khoản</a>
+	    <a class="nav-link" href="../category/account_manager.php">Quản Lý Tài Khoản</a>
 	  </li>
 	</ul>
 

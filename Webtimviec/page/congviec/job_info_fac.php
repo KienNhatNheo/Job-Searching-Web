@@ -45,7 +45,7 @@ if(isset($_GET['job_id'])){
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<a href="../home_page_user/user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<a href="../home_page_factory/user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
 				<?php 
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
@@ -61,7 +61,7 @@ if(isset($_GET['job_id'])){
 
 	<div class=" row header_2">
 		<div class="col-lg-3 ">
-			<a href="trangchu.php"><img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png"></a>
+			<a href="../home_page_factory/trangchu.php"><img style="width: 100%" src="https://phenikaa-x.com/wp-content/uploads/2020/10/logo_vn.png"></a>
 		</div>
 
 		<div class="col-lg-8 ">
@@ -95,22 +95,22 @@ if(isset($_GET['job_id'])){
 		<nav class="navbar navbar-expand-sm">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../home_page_user/">Trang Chủ</a>
+					<a class="nav-link" href="../home_page_factory/trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page_user/Front-end.php">Front-end</a>
+					<a style="width:100px" class="nav-link" href="../home_page_factory/Front-end.php">Front-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page_user/Back-end.php">Back-end</a>
+					<a style="width:100px" class="nav-link" href="../home_page_factory/Back-end.php">Back-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page_user/Tester.php">Tester</a>
+					<a style="width:100px" class="nav-link" href="../home_page_factory/Tester.php">Tester</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page_user/AI.php">AI</a>
+					<a style="width:100px" class="nav-link" href="../home_page_factory/AI.php">AI</a>
 				</li>
 			</ul>
-			<form class="form-inline" action="name_searching.php" method="REQUEST">
+			<form class="form-inline" action="../home_page_factory/name_searching.php" method="REQUEST">
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Tìm kiếm theo ngôn ngữ" name="name_searching">
 					

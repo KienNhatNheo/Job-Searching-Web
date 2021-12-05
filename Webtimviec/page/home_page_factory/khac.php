@@ -29,7 +29,7 @@ session_start();
        			if (isset($_SESSION['username']) && $_SESSION['username']){
            			echo '<a href="">'.$_SESSION['username'].'</a>';
            			echo' <span style="color:rgb(128,187,53)">---></span>';
-           			echo '<a href="../login/logout.php"> Đăng xuất</a>';
+           			echo '<a href="../login/logout.php">Đăng xuất</a>';
        			} else {
            			echo 'Bạn chưa đăng nhập';
        			}

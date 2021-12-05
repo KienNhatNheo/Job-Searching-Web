@@ -21,7 +21,7 @@ require_once ('../db/dbhelper.php');
 <body>
 	<ul class="nav nav-tabs">
 	  <li class="nav-item">
-	    <a class="nav-link" href="#">Quản Lý Danh Mục</a>
+	    <a class="nav-link" href="index.php">Quản Lý Danh Mục</a>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link" href="../congviec/search.php">Tìm Kiếm</a>

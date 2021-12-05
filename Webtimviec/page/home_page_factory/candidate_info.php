@@ -1,6 +1,6 @@
 <?php
 require_once ('../db/dbhelper.php');
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,8 +25,16 @@ require_once ('../db/dbhelper.php');
 				<a style="color: white;text-decoration: none;" href="">Email: webtimviec@gmail.com</a>
 			</li>
 			<li style="margin-left: 48%">
-				<i class="fas fa-user"></i>
-				<a style="color: white" href="../login/login.php">Đăng nhập</a>
+				<a href="user_info.php"><img style="padding-top: 0px" src="../image/user_avt.jpg"></a>
+				<?php 
+       			if (isset($_SESSION['username']) && $_SESSION['username']){
+           			echo '<a href="">'.$_SESSION['username'].'</a>';
+           			echo' <span style="color:rgb(128,187,53)">---></span>';
+           			echo '<a href="../login/logout.php"> Đăng xuất</a>';
+       			} else {
+           			echo 'Bạn chưa đăng nhập';
+       			}
+       			?>
 			</li>
 		</ul>
 	</div>
@@ -67,19 +75,22 @@ require_once ('../db/dbhelper.php');
 		<nav class="navbar navbar-expand-sm">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../home_page/trangchu.php">Trang Chủ</a>
+					<a class="nav-link" href="trangchu.php">Trang Chủ</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/Front-end.php">Front-end</a>
+					<a style="width:100px" class="nav-link" href="Front-end.php">Front-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/Back-end.php">Back-end</a>
+					<a style="width:100px" class="nav-link" href="Back-end.php">Back-end</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/Tester.php">Tester</a>
+					<a style="width:100px" class="nav-link" href="Tester.php">Tester</a>
 				</li>
 				<li style="text-align:center" class="nav-item">
-					<a style="width:100px" class="nav-link" href="../home_page/AI.php">AI</a>
+					<a style="width:100px" class="nav-link" href="AI.php">AI</a>
+				</li>
+				<li style="text-align:center" class="nav-item">
+					<a style="width:100px" class="nav-link" href="khac.php">Khác</a>
 				</li>
 			</ul>
 			<form class="form-inline" action="name_searching.php" method="REQUEST">

@@ -110,7 +110,7 @@ if(isset($_GET['job_id'])){
 					<a style="width:100px" class="nav-link" href="../home_page_user/AI.php">AI</a>
 				</li>
 			</ul>
-			<form class="form-inline" action="name_searching.php" method="REQUEST">
+			<form class="form-inline" action="../home_page_user/name_searching.php" method="REQUEST">
 				<div class="input-group">
 					<input type="text" class="form-control" placeholder="Tìm kiếm theo ngôn ngữ" name="name_searching">
 					
@@ -243,7 +243,7 @@ foreach ($Listcong_viec as $item){
 		
 	<script type="text/javascript">
 				function thongbao(){
-					document.getElementById("thongbao").innerHTML = "Ứng tuyển thành công"
+					document.getElementById("thongbao").innerHTML = "Ứng tuyển thành công!"
 					document.getElementById("thongbao").style.marginLeft = 480 + 'px'
 					document.getElementById("thongbao").style.marginTop = 15 + 'px'
 				}
