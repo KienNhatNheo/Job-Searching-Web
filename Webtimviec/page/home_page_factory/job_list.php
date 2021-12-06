@@ -128,7 +128,7 @@ session_start();
 		<thead>
 			<tr>
 				<th>STT</th>
-				<th>ID</th>
+				
 				<th>Tên Việc Làm</th>
 				<th>Lương</th>
 				<th>Ngôn Ngữ</th>
@@ -147,7 +147,6 @@ $index=1;
 foreach ($Listcong_viec as $item){
 	echo '<tr>
 			<td width=50px>'.($index++).'</td>
-			<td width=50px>'.$item['job_id'].'</td>
 			<td>'.$item['job_name'].'</td>
 			<td>'.$item['job_salary'].'trVNĐ/tháng</td>
 			<td>'.$item['job_language'].'</td>

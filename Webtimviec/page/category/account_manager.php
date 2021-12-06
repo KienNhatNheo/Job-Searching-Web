@@ -37,7 +37,7 @@ require_once ('../db/dbhelper.php');
 	<div class="container">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2 class="text-center">Quản Lý Tài </h2>
+				<h2 class="text-center">Quản Lý Tài Khoản</h2>
 			</div>
 			<div class="panel-body">
 	<table class="table table-bordered table-hover">

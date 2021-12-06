@@ -144,7 +144,7 @@ session_start();
 			</div>
 <?php 
 // Lấy danh sách dữ liệu từ CSDL
-$sql = 'select * from cong_viec order by job_id asc limit 16';
+$sql = 'select * from cong_viec order by job_id desc limit 16';
 $Listcong_viec = executeResult($sql);
 
 $index=1;
